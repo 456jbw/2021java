@@ -30,7 +30,7 @@ public class DrawDemo extends JFrame{
     public void init(){
         // String [] tb= {"直线","椭圆","矩形","多边形","画笔","圆","圆角矩形","填充3D矩形",
 		// "填充弧","填充圆","刷子","橡皮","喷子"};
-        String [] tb= {"矩形"};
+        String [] tb= {"矩形", "圆形"};
         JRadioButton t = new JRadioButton("加粗");
         ButtonGroup group = new ButtonGroup();
         
@@ -48,20 +48,22 @@ public class DrawDemo extends JFrame{
         // this.add(c);
         this.add(t);
         this.setTitle("画图");
-        this.setLayout(new FlowLayout()); // set layout
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // set size
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // set action when exit
-        this.setVisible(true); // 
-        this.addMouseListener(listner);
+        this.setLayout(new FlowLayout()); // 设置布局
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
+        this.setVisible(true); // 设置可见性
+        this.addMouseListener(listner); 
         this.addMouseMotionListener(listner);
 
     }
     /**
      * 这个方法重写了JFrame的画图方法,将会把所有绘制的图形全部绘制一次。
      * 同时使用了缓冲bfimg 预先加载好了背景
+     * @param g 用于显示图像的画笔工具。
      */
     @Override
     public void paint(Graphics g){
+        
         if (bfimg == null){
             System.out.println("bfimg");
             bfimg = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_4BYTE_ABGR_PRE);
