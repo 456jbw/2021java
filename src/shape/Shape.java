@@ -15,6 +15,7 @@ public abstract class Shape {
     protected Stroke stroke;
     protected State state;
     /**
+     * 构造函数
      * 
      * @param color 用于设置图形的颜色
      * @param stroke 用于设置图形线条的大小
@@ -25,7 +26,7 @@ public abstract class Shape {
         this.state = new State();
     }
 /**
- * 这个方法用于实现鼠标点击屏幕时,相对应的图形的行为。
+ * 这个方法重写了Shape类的pressStrategy方法,用于实现鼠标点击屏幕时,相对应的图形的行为。
  * 
  * @param x 这次点击时鼠标x轴的位置
  * @param y 这次点击时鼠标y轴的位置
@@ -44,6 +45,9 @@ public abstract class Shape {
 
     public void releaseStrategy(int x, int y){
 
+    };
+
+    public void pressStrategy(int x,int y){
     };
 
     public abstract String toString();
