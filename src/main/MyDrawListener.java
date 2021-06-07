@@ -50,16 +50,21 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
     @Override
     public void mouseClicked(MouseEvent e) {
        
+        // int x = (int)e.getX(), y=(int)e.getY();
+        // if (shape == null || shape.getState().isEnd()){
+        //     shape = shapeFactory.createShape(type, color, stroke);
+        //     shapesList.add(shape);
+        // }
+        // shape.clickStrategy(x, y);
+    }
+    @Override
+    public void mousePressed(MouseEvent e){
         int x = (int)e.getX(), y=(int)e.getY();
         if (shape == null || shape.getState().isEnd()){
             shape = shapeFactory.createShape(type, color, stroke);
             shapesList.add(shape);
         }
         shape.clickStrategy(x, y);
-    }
-    @Override
-    public void mousePressed(MouseEvent e){
-        double x = e.getX(), y = e.getY();
     }
     /**
      * 这个方法重写了mouseMoved 方法,用于监听鼠标移动
@@ -69,11 +74,28 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
     public void mouseMoved(MouseEvent e) {
         super.mouseMoved(e);
         int x = (int)e.getX(), y=(int)e.getY();
+        // if (shape == null){
+        //     return;
+        // }
+        // System.out.printf("Move: %d %d\n", x, y);
+        // shape.moveStrategy(x, y);
+        // if (shape.getState().isMiddle()) {
+            // DrawMoveThread thread = new DrawMoveThread("draw", this.demo);
+            // thread.start();
+            // thread.run();
+            // this.demo.repaint();
+        // }
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        // TODO Auto-generated method stub
+        int x = (int)e.getX(), y=(int)e.getY();
         if (shape == null){
             return;
         }
         // System.out.printf("Move: %d %d\n", x, y);
-        shape.moveStrategy(x, y);
+        shape.dragStrategy(x, y);
         if (shape.getState().isMiddle()) {
             // DrawMoveThread thread = new DrawMoveThread("draw", this.demo);
             // thread.start();
@@ -82,19 +104,13 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
         }
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        // TODO Auto-generated method stub
-        int x = (int)e.getX(), y=(int)e.getY();
-        System.out.printf("Drag: %d %d\n", x, y);
-        // shape.dragStrategy(x, y);
-    }
-
 
     @Override 
     public void mouseReleased(MouseEvent e) {
         int x = (int)e.getX(), y=(int)e.getY();
-        System.out.printf("Release: %d %d\n", x, y);
+        if (shape.getState().isMiddle()){
+            shape.getState().next();
+        }
     }
 
     public List<Shape> getShapesList() {

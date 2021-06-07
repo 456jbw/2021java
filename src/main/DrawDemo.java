@@ -12,7 +12,6 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import main.MyDrawListener;
 import shape.Shape;
 /**
  * 这个类用于设置画图的主窗口和绘制图像
