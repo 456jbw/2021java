@@ -18,10 +18,15 @@ public class ShapeFactory {
      */
     public Shape createShape(String type, Color color, Stroke stroke){
         Shape shape;
-        if (type.equals("矩形")){
-            shape = new ShapeRect(color, stroke);
-            return shape;
-        }
-        return null;
+        switch(type){
+            case "矩形":
+                shape = new ShapeRect(color, stroke);
+                return shape;
+            case "圆形":
+                shape = new ShapeCircle(color, stroke);
+                return shape;
+            default:
+                return null;
+            }
     }
 }
