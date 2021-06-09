@@ -25,7 +25,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
     private List<Shape> shapesList;
     private Color color = Color.black;
     private JColorChooser colorChooser;
-    private Stroke stroke = new BasicStroke(10);
+    private Stroke stroke = new BasicStroke(5);
     private Shape shape;
     private ShapeFactory shapeFactory = new ShapeFactory();
     private DrawDemo demo;
