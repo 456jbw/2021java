@@ -30,7 +30,7 @@ public class DrawDemo extends JFrame{
     public void init(){
         // String [] tb= {"直线","椭圆","矩形","多边形","画笔","圆","圆角矩形","填充3D矩形",
 		// "填充弧","填充圆","刷子","橡皮","喷子"};
-        String [] tb= {"矩形", "圆形"};
+        String [] tb= {"矩形","圆形","直线","椭圆","圆角矩形"};
         JRadioButton t = new JRadioButton("加粗");
         ButtonGroup group = new ButtonGroup();
         
