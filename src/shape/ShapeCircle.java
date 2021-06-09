@@ -43,7 +43,15 @@ public class ShapeCircle extends Shape{
             setY2(y);
         }
     }
-    
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
+
+
+
     @Override
     public void draw(Graphics2D g) {
         g.setColor(this.color);

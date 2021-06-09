@@ -39,8 +39,17 @@ public class ShapeRect extends Shape{
             setX2(x);
             setY2(y);
         }
-        
     }
+
+    
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
+
+    
     @Override
     public String toString() {
         // TODO Auto-generated method stub
