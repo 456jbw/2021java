@@ -25,7 +25,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
     private List<Shape> shapesList;
     private Color color = Color.black;
     private JColorChooser colorChooser;
-    private Stroke stroke = new BasicStroke(10);
+    private Stroke stroke = new BasicStroke(5);
     private Shape shape;
     private ShapeFactory shapeFactory = new ShapeFactory();
     private DrawDemo demo;
@@ -48,7 +48,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
     public void mouseClicked(MouseEvent e) {
 
     }
-     
+    
     /**
      * 这个方法重写了mousePressed 方法,当鼠标按下之后,如果当前没有设置画图的类型或者是画图的图形状态处于结束状态,将会创建一个新的图形。
      */
