@@ -17,7 +17,6 @@ public class MyColorListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton instance = (JButton) e.getSource();
         Color color = instance.getBackground();
-        System.out.println(color);
         MyDrawListener.getInstance().setColor(color);
     }
 }

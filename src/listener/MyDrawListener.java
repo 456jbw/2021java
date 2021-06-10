@@ -3,15 +3,14 @@ package listener;
 import java.awt.event.*;
 import javax.swing.event.*;
 
+import controller.*;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
-import java.util.Deque;
 import java.util.List;
 import java.util.ArrayList;
 import shape.Shape;
 import main.DrawDemo;
-import main.DrawMoveThread;
 import shape.ShapeFactory;
 import state.State;
 import views.Drawboard;
@@ -22,18 +21,15 @@ import views.Drawboard;
  */
 public class MyDrawListener extends MouseAdapter implements ActionListener, ChangeListener{
     // private ArrayList list; 
-    private List<Shape> shapesList;
     private Color color = Color.black;
     private Stroke stroke = new BasicStroke(1);
     private Shape shape;
     private ShapeFactory shapeFactory = new ShapeFactory();
-    private DrawDemo demo;
     private String type = "矩形";
     private static MyDrawListener myDrawListener;
 
     public MyDrawListener() {
         super();
-        shapesList = new ArrayList<Shape>();
     }
 
     public static MyDrawListener getInstance() {
@@ -75,7 +71,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
             System.out.print("create:");
             System.out.println(color);
             shape = shapeFactory.createShape(type, color, stroke);
-            shapesList.add(shape);
+            Controller.getInstance().addShape(shape);
         }
         shape.pressStrategy(x, y);
     }
@@ -101,7 +97,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         // System.out.printf("Move: %d %d\n", x, y);
         shape.dragStrategy(x, y);
         if (shape.getState().isMiddle()) {
-            this.demo.repaint();
+            Drawboard.getInstance().repaint();
         }
     }
 
@@ -109,14 +105,9 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
     public void mouseReleased(MouseEvent e) {
         int x = (int)e.getX(), y=(int)e.getY();
         shape.releaseStrategy(x, y);
-    }
-
-    public List<Shape> getShapesList() {
-        return shapesList;
-    }
-
-    public void setShapesList(List<Shape> shapesList) {
-        this.shapesList = shapesList;
+        if (shape.getState().isEnd()){
+            // Controller.getInstance().repaint();
+        }
     }
 
     public Shape getShape() {
@@ -125,14 +116,6 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
 
     public void setShape(Shape shape) {
         this.shape = shape;
-    }
-
-    public DrawDemo getDemo() {
-        return demo;
-    }
-
-    public void setDemo(DrawDemo demo) {
-        this.demo = demo;
     }
 
     public Color getColor() {
@@ -150,6 +133,4 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
     public void setStroke(Stroke stroke) {
         this.stroke = stroke;
     }
-
-
 }
