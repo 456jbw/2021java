@@ -1,41 +1,57 @@
 package listener;
+
 import java.awt.event.*;
-import java.util.ArrayList;
+import javax.swing.event.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Graphics;
+import java.util.Deque;
 import java.util.List;
-
-import javax.swing.JColorChooser;
-import javax.swing.JRadioButton;
-import java.awt.Color;
-import java.awt.Stroke;
-
-import java.awt.BasicStroke;
-
+import java.util.ArrayList;
 import shape.Shape;
 import main.DrawDemo;
 import main.DrawMoveThread;
 import shape.ShapeFactory;
 import state.State;
+import views.Drawboard;
 
 /**
  * 这个类是一个观察者,继承了MouseAdapter用于监听主界面中鼠标的各种操作
  * 同时实现了ActionListener接口用于监听点击各种按钮的事件。
  */
-public class MyDrawListener extends MouseAdapter implements ActionListener{
+public class MyDrawListener extends MouseAdapter implements ActionListener, ChangeListener{
     // private ArrayList list; 
     private List<Shape> shapesList;
     private Color color = Color.black;
-    private JColorChooser colorChooser;
-    private Stroke stroke = new BasicStroke(10);
+    private Stroke stroke = new BasicStroke(1);
     private Shape shape;
     private ShapeFactory shapeFactory = new ShapeFactory();
     private DrawDemo demo;
     private String type = "矩形";
+    private static MyDrawListener myDrawListener;
 
-    public MyDrawListener(DrawDemo demo){
+    public MyDrawListener() {
         super();
-        this.demo = demo;
         shapesList = new ArrayList<Shape>();
     }
+
+    public static MyDrawListener getInstance() {
+        if (myDrawListener == null) {
+            myDrawListener = new MyDrawListener();
+        }
+        return myDrawListener;
+    }
+
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        JSlider jslider = (JSlider) e.getSource();
+        // 将焦点还给绘图区域（没有焦点没有办法响应键盘事件）
+        stroke = new BasicStroke(jslider.getValue());
+        Drawboard.getInstance().requestFocus();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stu
@@ -56,6 +72,8 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
     public void mousePressed(MouseEvent e){
         int x = (int)e.getX(), y=(int)e.getY();
         if (shape == null || shape.getState().isEnd()){
+            System.out.print("create:");
+            System.out.println(color);
             shape = shapeFactory.createShape(type, color, stroke);
             shapesList.add(shape);
         }
@@ -83,9 +101,6 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
         // System.out.printf("Move: %d %d\n", x, y);
         shape.dragStrategy(x, y);
         if (shape.getState().isMiddle()) {
-            // DrawMoveThread thread = new DrawMoveThread("draw", this.demo);
-            // thread.start();
-            // thread.run();
             this.demo.repaint();
         }
     }
@@ -110,6 +125,30 @@ public class MyDrawListener extends MouseAdapter implements ActionListener{
 
     public void setShape(Shape shape) {
         this.shape = shape;
+    }
+
+    public DrawDemo getDemo() {
+        return demo;
+    }
+
+    public void setDemo(DrawDemo demo) {
+        this.demo = demo;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Stroke getStroke() {
+        return stroke;
+    }
+
+    public void setStroke(Stroke stroke) {
+        this.stroke = stroke;
     }
 
 
