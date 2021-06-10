@@ -1,12 +1,9 @@
 package main;
 
 import java.awt.*;
-import java.awt.Color;
-import shape.Shape;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 
+import views.ButtonView;
 import views.Drawboard;
 import listener.*;
 
@@ -25,31 +22,45 @@ public class DrawDemo extends JFrame{
     public void init(){
         // String [] tb= {"直线","椭圆","矩形","多边形","画笔","圆","圆角矩形","填充3D矩形",
 		// "填充弧","填充圆","刷子","橡皮","喷子"};
-        String [] tb= {"矩形", "圆形"};
-        JRadioButton t = new JRadioButton("加粗");
-        ButtonGroup group = new ButtonGroup();
+
+        this.setLayout(new BorderLayout());
+
+
+        MyDrawListener listener = MyDrawListener.getInstance();
+        listener.setDemo(this);
+
+        JPanel drawboard = new Drawboard();
+        drawboard.addMouseListener(listener);
+        drawboard.addMouseMotionListener(listener);
+        drawboard.setBackground(Color.CYAN);
+        drawboard.setVisible(true);
+        drawboard.setPreferredSize(new Dimension(0,1000));
         
-        MyDrawListener listner = new MyDrawListener(this);
-        for (int i = 0; i < tb.length; i++){
-            JRadioButton button = new JRadioButton(tb[i]);
-            button.setSelected(true);
-            group.add(button);
-            button.addActionListener(listner);
-            this.add(button, BorderLayout.NORTH);
-        }
-
-        JPanel drawboard = new Drawboard(listner);
-
         // this.add(t, BorderLayout.NORTH);
         this.setTitle("画图");
         // this.setLayout(new FlowLayout()); // 设置布局
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
-        this.setVisible(true); // 设置可见性
+      
+        ButtonView buttonView = new ButtonView(listener); // 按钮布局
+        buttonView.init();
+        buttonView.setVisible(true);
+        buttonView.setPreferredSize(new Dimension(0,40));
         
-        this.add(drawboard, BorderLayout.CENTER);
-        drawboard.setBackground(Color.CYAN);
-        drawboard.setVisible(true);
-        drawboard.setSize(200, 400);
+        drawboard.setLayout(null);
+        
+        JButton b = new JButton("发送");
+        b.setBounds(250, 940, 70, 30);
+
+        JTextField text = new JTextField();
+        text.setBounds(30, 940, 220, 30);
+
+        drawboard.add(b);
+        drawboard.add(text);
+
+        this.add(drawboard, BorderLayout.SOUTH);  
+        this.add(buttonView, BorderLayout.NORTH);
+        
+        this.setVisible(true);
     }
 }
