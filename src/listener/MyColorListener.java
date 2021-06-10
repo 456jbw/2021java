@@ -4,7 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 import views.Drawboard;
 
-
 public class MyColorListener implements ActionListener {
     private static MyColorListener myColorListener;
     public static MyColorListener getInstance(){

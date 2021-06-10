@@ -1,4 +1,7 @@
 package state;
+
+import java.io.Serializable;
+
 enum StateType{
     Start, Middle, End;
 }
@@ -9,7 +12,12 @@ enum StateType{
  * 当图形处于End态时,将会结束监听位置,并且确定完成图形的最终形状。
  * @author Costwen
  */
-public class State {
+
+public class State implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private StateType type = StateType.Start;
     public State(){
     }

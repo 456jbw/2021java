@@ -7,12 +7,10 @@ import controller.Client;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 import shape.Shape;
 import listener.*;
-
 
 public class Drawboard extends JPanel{
     /**
@@ -74,9 +72,10 @@ public class Drawboard extends JPanel{
         //绘制聊天内容
         int i = 0;
         Iterator<String> iterator = Client.getInstance().getContentsList().iterator();
+        int size = Client.getInstance().getContentsList().size();
         while(iterator.hasNext()){
             String s = (String)iterator.next();
-            bfpen.drawString(s, 30, 500 + 20*i);
+            bfpen.drawString(s, 30, 460 + 21*(5 - size+i));
             i++;
         }
 
