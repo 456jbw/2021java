@@ -50,10 +50,10 @@ public class DrawDemo extends JFrame{
         drawboard.setLayout(null);
 
         JButton b = new JButton("发送");
-        b.setBounds(250, 940, 70, 30);
+        b.setBounds(250, 550, 70, 30);
 
         JTextField text = new JTextField();
-        text.setBounds(30, 940, 220, 30);
+        text.setBounds(30, 550, 220, 30);
 
         MyTextListener textListener = MyTextListener.getInstance();
         
@@ -67,5 +67,6 @@ public class DrawDemo extends JFrame{
         this.add(drawboard, BorderLayout.SOUTH);  
         this.add(buttonView, BorderLayout.NORTH);
         this.setVisible(true);
+        repaint();
     }
 }

@@ -5,7 +5,10 @@ import listener.MyDrawListener;
 import java.awt.*;
 
 public class ButtonView extends JPanel{
-    private MyDrawListener listener;
+    /**
+	 *
+	 */
+	private MyDrawListener listener;
     private static ButtonView buttonView;
     private ButtonView(){
     }
