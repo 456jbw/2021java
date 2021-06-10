@@ -8,6 +8,7 @@ public class Controller{
 	public void addShape(Shape shape){
 		try {
 			Server.getInstance().sendShape(shape);
+			Server.getInstance().sendRepaint();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -15,6 +16,7 @@ public class Controller{
 	public void addContent(String content){
 		try {
 			Server.getInstance().sendContent(content);
+			Server.getInstance().sendRepaint();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
