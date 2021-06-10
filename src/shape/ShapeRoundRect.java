@@ -58,7 +58,12 @@ public class ShapeRoundRect extends Shape{
         int minedge=Math.min(maxx-minx,maxy-miny);
         g.drawRoundRect(minx, miny, maxx-minx, maxy-miny,minedge/3,minedge/3);
     }
-
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
     public int getX2() {
         return x2;
     }

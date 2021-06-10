@@ -2,6 +2,8 @@ package shape;
 
 import java.awt.*;
 
+import views.Drawboard;
+
 public class ShapeTextBoard extends Shape{
     private int x2, y2;
     private int []dotXlist=new int[12];
@@ -62,11 +64,17 @@ public class ShapeTextBoard extends Shape{
         dotYlist[1]=y2;
         dotYlist[2]=y2*9/10+y1/10;
         g.drawPolygon(dotXlist,dotYlist,3);
-        g.setColor(Color.BLUE);//如何获得背景颜色？
+
+        g.setColor(Drawboard.getInstance().getBackground());//如何获得背景颜色？
         g.drawLine(x1*4/5+x2/5,y2*9/10+y1/10,x1*13/20+x2*7/20,y2*9/10+y1/10);
     }
 
-
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
     public int getX2() {
         return x2;
     }

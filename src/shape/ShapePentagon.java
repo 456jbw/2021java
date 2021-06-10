@@ -61,7 +61,12 @@ public class ShapePentagon extends Shape{
         dotYlist[4]=y2;
         g.drawPolygon(dotXlist,dotYlist,5);
     }
-
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
 
     public int getX2() {
         return x2;

@@ -74,6 +74,12 @@ public class ShapeEqualTri extends Shape{
         this.y2 = y2;
     }
 
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
 }
 
 

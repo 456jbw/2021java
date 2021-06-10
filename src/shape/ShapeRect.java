@@ -1,14 +1,15 @@
 package shape;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
+import state.State;
 
 /**
- * @author jbw
- * @date 2021/6/9 - 21:27
+ * 这个类是矩形类的具体实现,继承了Shape类
  */
-public class ShapeOval extends Shape{
+public class ShapeRect extends Shape{
     private int x2, y2;
-    public ShapeOval(Color color, Stroke stroke){
+    public ShapeRect(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -38,12 +39,21 @@ public class ShapeOval extends Shape{
             setX2(x);
             setY2(y);
         }
-
     }
+
+    
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
+
+    
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "椭圆";
+        return "矩形";
     }
 
     @Override
@@ -55,15 +65,10 @@ public class ShapeOval extends Shape{
         if (minx == 0 && miny == 0){
             return;
         }
-        g.drawOval(minx, miny, maxx-minx, maxy-miny);
+        g.drawRect(minx, miny, maxx-minx, maxy-miny);
     }
 
-    @Override
-    public void releaseStrategy(int x, int y) {
-        if (getState().isMiddle()){
-            getState().next();
-        }
-    }
+
     public int getX2() {
         return x2;
     }
@@ -79,5 +84,5 @@ public class ShapeOval extends Shape{
     public void setY2(int y2) {
         this.y2 = y2;
     }
-
+    
 }

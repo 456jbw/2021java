@@ -59,7 +59,13 @@ public class ShapeHeart extends Shape{
         }
         g.drawPolygon(dotXlist,dotYlist,360);
     }
-
+    
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
 
     public int getX2() {
         return x2;

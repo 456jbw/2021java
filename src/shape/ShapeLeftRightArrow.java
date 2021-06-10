@@ -65,7 +65,12 @@ public class ShapeLeftRightArrow extends Shape{
         g.drawPolygon(dotXlist,dotYlist,7);
     }
 
-
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
     public int getX2() {
         return x2;
     }

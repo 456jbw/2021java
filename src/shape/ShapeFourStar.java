@@ -67,6 +67,12 @@ public class ShapeFourStar extends Shape{
         g.drawPolygon(dotXlist,dotYlist,8);
     }
 
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
 
     public int getX2() {
         return x2;

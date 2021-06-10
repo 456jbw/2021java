@@ -57,7 +57,13 @@ public class ShapeRightTri extends Shape{
         g.setStroke(this.stroke);
         g.drawPolygon(dotXlist,dotYlist,3);
     }
-
+    
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
 
     public int getX2() {
         return x2;

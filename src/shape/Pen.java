@@ -60,6 +60,12 @@ public class Pen extends Shape{
         }
     }
 
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
 
     public int getX2() {
         return x2;

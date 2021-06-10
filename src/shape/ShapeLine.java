@@ -50,7 +50,12 @@ public class ShapeLine extends Shape{
         g.drawLine(x1, y1, x2, y2);
     }
 
-
+    @Override
+    public void releaseStrategy(int x, int y) {
+        if (getState().isMiddle()){
+            getState().next();
+        }
+    }
     public int getX2() {
         return x2;
     }
