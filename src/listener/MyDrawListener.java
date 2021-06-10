@@ -7,8 +7,6 @@ import controller.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
-import java.util.ArrayList;
 import shape.Shape;
 import main.DrawDemo;
 import shape.ShapeFactory;
@@ -69,9 +67,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         int x = (int)e.getX(), y=(int)e.getY();
         if (shape == null || shape.getState().isEnd()){
             System.out.print("create:");
-            System.out.println(color);
             shape = shapeFactory.createShape(type, color, stroke);
-            Controller.getInstance().addShape(shape);
         }
         shape.pressStrategy(x, y);
     }
@@ -106,6 +102,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         int x = (int)e.getX(), y=(int)e.getY();
         shape.releaseStrategy(x, y);
         if (shape.getState().isEnd()){
+            Controller.getInstance().addShape(shape);
             // Controller.getInstance().repaint();
         }
     }

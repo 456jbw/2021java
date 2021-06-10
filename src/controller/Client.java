@@ -13,7 +13,6 @@ public class Client {
     private List<Shape> shapesList;
     private Deque<String> contentsList;
     private static Client client;
-
     private Client() {
         shapesList = new ArrayList<Shape>();
         contentsList = new ArrayDeque<String>();

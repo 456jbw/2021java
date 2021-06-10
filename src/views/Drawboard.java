@@ -62,19 +62,30 @@ public class Drawboard extends JPanel{
         }
 
         List<Shape> shapesList = Client.getInstance().getShapesList();
-        bfpen.setColor(getBackground());// 设置背景颜色
+        bfpen.setColor(getBackground()); //设置背景颜色
         bfpen.fillRect(0, 0, getWidth(), getHeight());
 
-        for (Shape shape : shapesList) {
-            shape.draw((Graphics2D) bfpen);
+        Shape curShape = MyDrawListener.getInstance().getShape();
+
+        if (curShape != null && curShape.getState().isMiddle()){
+            curShape.draw(bfpen);
         }
 
+        for (Shape shape : shapesList) {
+            shape.draw(bfpen);
+        }
+        
         //绘制聊天内容
         int i = 0;
         Iterator<String> iterator = Client.getInstance().getContentsList().iterator();
         int size = Client.getInstance().getContentsList().size();
+
+        bfpen.setColor(Color.BLACK); //设置背景颜色
+        
         while(iterator.hasNext()){
             String s = (String)iterator.next();
+
+            bfpen.setColor(Color.BLACK); //设置背景颜色
             bfpen.drawString(s, 30, 460 + 21*(5 - size+i));
             i++;
         }

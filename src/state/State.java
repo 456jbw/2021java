@@ -43,7 +43,7 @@ public class State implements Serializable{
         }
     }
     /**
-     * 用来判断是否为Start状态
+     * 用来判断是否为Start状态,Start状态将会创建一个新的形状对象,然后转化为Middle状态
      * @return true 表示结果为真, false 表示结果为假
      */
     public boolean isStart(){
@@ -53,6 +53,10 @@ public class State implements Serializable{
         return false;
     }
     
+    /**
+     * 用来判断是否为Middle状态,Middle状态表示处于正在画图的状态,这个时候将会持续的刷新动态显示画图轨迹
+     * @return true 表示结果为真, false 表示结果为假
+     */
     public boolean isMiddle(){
         if (this.getType() == StateType.Middle){
             return true;

@@ -79,10 +79,11 @@ public class ButtonView extends JPanel{
         this.add(cl);
         // 添加线条粗细调整到toolbar的第二行
         JLabel back1 = new JLabel("线条宽度");
-        back1.setBounds(850,25,60,20);
+        back1.setBounds(800,25,60,20);
         this.add(back1);
+
         LineWidth lw=new LineWidth();
-        lw.setBounds(910,25,150,60);
+        lw.setBounds(860,25,150,200);
         this.add(lw);
         
         this.add(northPanel, BorderLayout.WEST);
