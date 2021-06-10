@@ -76,7 +76,7 @@ public class Drawboard extends JPanel{
         Iterator<String> iterator = Client.getInstance().getContentsList().iterator();
         while(iterator.hasNext()){
             String s = (String)iterator.next();
-            bfpen.drawString(s, 30, 840 + 20*i);
+            bfpen.drawString(s, 30, 500 + 20*i);
             i++;
         }
 
