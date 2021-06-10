@@ -55,7 +55,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stu
-        if (e.getSource() instanceof JRadioButton){
+        if (e.getSource() instanceof JButton){
                 type = e.getActionCommand();
             }
     }

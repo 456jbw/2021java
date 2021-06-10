@@ -18,6 +18,9 @@ public class Drawboard extends JPanel{
     private Graphics bfpen;
     private static Drawboard drawboard;
     private static List<Component> componentList;
+    private Drawboard(){
+        
+    }
 
     @Override
     public Component add(Component comp) {

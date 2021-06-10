@@ -1,25 +1,41 @@
 package views;
 import javax.swing.*;
+
+import javafx.scene.control.Button;
 import listener.MyDrawListener;
 import java.awt.*;
 
 public class ButtonView extends JPanel{
-    MyDrawListener listener;
-    public ButtonView(MyDrawListener listener){
-        // this.setLayout();
-        // this.setBackground(Color.RED);
-        this.listener = listener;
+    private MyDrawListener listener;
+    private static ButtonView buttonView;
+    private ButtonView(){
     }
+
+    public static ButtonView getInstance(){
+        if (buttonView == null){
+            buttonView = new ButtonView();
+        }
+        return buttonView;
+    }
+
+
+
     public void init(){
         JPanel northPanel = new JPanel();
         JPanel southPanel = new JPanel();
         this.setLayout(new BorderLayout());
 
-        String[] shapeArray = { "铅笔", "直线", "矩形", "圆", "文本", "橡皮擦", "帮助" };
+        String[] shapeArray = { "矩形", "圆形", "直线", "椭圆", 
+        "圆角矩形", "画笔", "直角三角形", "等腰三角形", 
+        "菱形", "五边形", "六边形", "上下箭头", 
+        "左右箭头", "四角星", "五角星", "六角星", 
+        "平行四边形", "等腰梯形", "对话框", "爱心" };
+
         // 添加所有的按钮并添加按钮点击事件监听
         for (String item : shapeArray) {
             JButton tmp = new JButton(item);
             tmp.addActionListener(listener);
+            // tmp.setPreferredSize(new Dimension(80,20));
             northPanel.add(tmp);
         }
 
@@ -37,5 +53,13 @@ public class ButtonView extends JPanel{
         
         this.add(northPanel, BorderLayout.WEST);
         this.add(southPanel, BorderLayout.EAST);
+    }
+
+    public MyDrawListener getListener() {
+        return listener;
+    }
+
+    public void setListener(MyDrawListener listener) {
+        this.listener = listener;
     }
 }

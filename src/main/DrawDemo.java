@@ -28,7 +28,8 @@ public class DrawDemo extends JFrame{
         MyDrawListener listener = MyDrawListener.getInstance();
         listener.setDemo(this);
 
-        JPanel drawboard = new Drawboard();
+        JPanel drawboard = Drawboard.getInstance();
+
         drawboard.addMouseListener(listener);
         drawboard.addMouseMotionListener(listener);
         drawboard.setBackground(Color.CYAN);
@@ -41,11 +42,14 @@ public class DrawDemo extends JFrame{
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
       
-        ButtonView buttonView = new ButtonView(listener); // 按钮布局
+        // 设置按钮布局
+        ButtonView buttonView = ButtonView.getInstance();
+        buttonView.setListener(listener);
         buttonView.init();
         buttonView.setVisible(true);
         buttonView.setPreferredSize(new Dimension(0,40));
-        
+    
+        // 设置对话框布局
         drawboard.setLayout(null);
         
         JButton b = new JButton("发送");
@@ -57,9 +61,9 @@ public class DrawDemo extends JFrame{
         drawboard.add(b);
         drawboard.add(text);
 
+        // 添加布局
         this.add(drawboard, BorderLayout.SOUTH);  
         this.add(buttonView, BorderLayout.NORTH);
-        
         this.setVisible(true);
     }
 }
