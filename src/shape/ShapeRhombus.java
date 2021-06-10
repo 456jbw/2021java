@@ -3,6 +3,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeRhombus extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[4];
     private int []dotYlist=new int[4];

@@ -7,6 +7,10 @@ import java.awt.*;
  * @date 2021/6/9 - 21:49
  */
 public class ShapeRoundRect extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     public ShapeRoundRect(Color color, Stroke stroke){
         super(color, stroke);

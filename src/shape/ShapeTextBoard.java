@@ -5,6 +5,10 @@ import java.awt.*;
 import views.Drawboard;
 
 public class ShapeTextBoard extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[12];
     private int []dotYlist=new int[12];
