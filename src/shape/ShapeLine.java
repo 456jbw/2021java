@@ -50,7 +50,7 @@ public class ShapeLine extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         g.drawLine(x1, y1, x2, y2);
     }
 

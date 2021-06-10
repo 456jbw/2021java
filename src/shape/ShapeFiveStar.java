@@ -51,7 +51,7 @@ public class ShapeFiveStar extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         dotXlist[0]=x1;
         dotXlist[1]=x1*5/8+x2*3/8;
         dotXlist[2]=x2/2+x1/2;

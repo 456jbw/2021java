@@ -56,7 +56,7 @@ public class Pen extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         int arrX[]=dotXlist.stream().mapToInt(Integer::valueOf).toArray();
         int arrY[]=dotYlist.stream().mapToInt(Integer::valueOf).toArray();
         for(int i=0;i<dotYlist.size()-1;i++){

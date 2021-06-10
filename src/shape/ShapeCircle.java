@@ -59,7 +59,7 @@ public class ShapeCircle extends Shape{
     @Override
     public void draw(Graphics2D g) {
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
 
         if (x2 == 0 && y2 == 0){
             return;

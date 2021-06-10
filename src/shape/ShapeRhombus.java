@@ -51,7 +51,7 @@ public class ShapeRhombus extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         dotXlist[0]=x1;
         dotXlist[1]=(x1+x2)/2;
         dotXlist[2]=x2;

@@ -51,7 +51,7 @@ public class ShapeHeart extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         double x,y;
         int k=0;
         for(double t = 1;t<=360;t++){

@@ -58,7 +58,7 @@ public class ShapeRightTri extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         g.drawPolygon(dotXlist,dotYlist,3);
     }
     

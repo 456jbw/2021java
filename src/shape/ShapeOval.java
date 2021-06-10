@@ -53,7 +53,7 @@ public class ShapeOval extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
         int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
         if (minx == 0 && miny == 0){
