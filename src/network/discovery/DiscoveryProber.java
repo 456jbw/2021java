@@ -7,6 +7,7 @@ import java.net.InetSocketAddress;
 import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.function.BiConsumer;
+import java.util.HashMap;
 
 /**
  * peer prober
@@ -51,9 +52,12 @@ public class DiscoveryProber implements Runnable {
 	/**
 	 * UDP server to handle incoming probe response packet
 	 */
-	public class DiscoverServer extends UDPServer {
+	class DiscoverServer extends UDPServer {
 		private final BiConsumer<String, InetSocketAddress> callback;
-		public DiscoverServer(
+
+		private HashMap<String, InetSocketAddress> peers = 
+			new HashMap<String, InetSocketAddress>();
+		DiscoverServer(
 				int port,
 				BiConsumer<String, InetSocketAddress> cb
 				) throws IOException {
@@ -61,12 +65,23 @@ public class DiscoveryProber implements Runnable {
 			this.callback = cb;
 		}
 
-		public DiscoverServer(
+		DiscoverServer(
 				InetSocketAddress addr,
 				BiConsumer<String, InetSocketAddress> cb
 				) throws IOException {
 			super(addr);
 			this.callback = cb;
+		}
+
+		private void handleResponse(String name, InetSocketAddress addr) {
+			logger.info("received probe reponse from "
+					+ name + "@" + addr);
+			if (peers.get(name) != null) {
+				// ignore duplicated response
+				return;
+			}
+			peers.put(name, addr);
+			this.callback.accept(name, addr);
 		}
 
 		@Override
@@ -87,9 +102,7 @@ public class DiscoveryProber implements Runnable {
 				var respaddr = new InetSocketAddress(
 						inetaddr.getAddress(),
 						port);
-				logger.info("received probe reponse from "
-						+ name + "@" + respaddr);
-				this.callback.accept(name, respaddr);
+				handleResponse(name, respaddr);
 			} catch (ClassCastException ignored) {
 			}
 		}
