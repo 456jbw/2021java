@@ -25,7 +25,6 @@ public class DrawDemo extends JFrame{
 
         this.setLayout(new BorderLayout());
 
-
         MyDrawListener listener = MyDrawListener.getInstance();
         listener.setDemo(this);
 
