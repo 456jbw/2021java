@@ -10,6 +10,10 @@ import shape.Shape;
  * 这个类是圆形的具体实现类,继承了基类Shape用于绘制图形
  */
 public class ShapeCircle extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     int radius; // 半径
     int x2,y2; // 另一个点的坐标
     /**
@@ -55,7 +59,7 @@ public class ShapeCircle extends Shape{
     @Override
     public void draw(Graphics2D g) {
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
 
         if (x2 == 0 && y2 == 0){
             return;

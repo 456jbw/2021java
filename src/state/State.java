@@ -1,4 +1,7 @@
 package state;
+
+import java.io.Serializable;
+
 enum StateType{
     Start, Middle, End;
 }
@@ -9,7 +12,12 @@ enum StateType{
  * 当图形处于End态时,将会结束监听位置,并且确定完成图形的最终形状。
  * @author Costwen
  */
-public class State {
+
+public class State implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private StateType type = StateType.Start;
     public State(){
     }
@@ -35,7 +43,7 @@ public class State {
         }
     }
     /**
-     * 用来判断是否为Start状态
+     * 用来判断是否为Start状态,Start状态将会创建一个新的形状对象,然后转化为Middle状态
      * @return true 表示结果为真, false 表示结果为假
      */
     public boolean isStart(){
@@ -45,6 +53,10 @@ public class State {
         return false;
     }
     
+    /**
+     * 用来判断是否为Middle状态,Middle状态表示处于正在画图的状态,这个时候将会持续的刷新动态显示画图轨迹
+     * @return true 表示结果为真, false 表示结果为假
+     */
     public boolean isMiddle(){
         if (this.getType() == StateType.Middle){
             return true;

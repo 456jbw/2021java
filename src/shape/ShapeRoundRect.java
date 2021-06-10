@@ -7,6 +7,10 @@ import java.awt.*;
  * @date 2021/6/9 - 21:49
  */
 public class ShapeRoundRect extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     public ShapeRoundRect(Color color, Stroke stroke){
         super(color, stroke);
@@ -49,7 +53,7 @@ public class ShapeRoundRect extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
         int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
         if (minx == 0 && miny == 0){

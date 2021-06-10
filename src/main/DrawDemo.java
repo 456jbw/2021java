@@ -2,7 +2,6 @@ package main;
 
 import java.awt.*;
 import javax.swing.*;
-
 import views.ButtonView;
 import views.Drawboard;
 import listener.*;
@@ -12,58 +11,62 @@ import listener.*;
  * @author Costwen
  */
 public class DrawDemo extends JFrame{
-    public static void main(String[] args) {
-        DrawDemo s = new DrawDemo();
-        s.init();
-    }
+
     /**
      * 这个方法用于加载和显示主窗口的各种按钮
      */
     public void init(){
-        // String [] tb= {"直线","椭圆","矩形","多边形","画笔","圆","圆角矩形","填充3D矩形",
-		// "填充弧","填充圆","刷子","橡皮","喷子"};
 
         this.setLayout(new BorderLayout());
 
         MyDrawListener listener = MyDrawListener.getInstance();
-        listener.setDemo(this);
 
         JPanel drawboard = Drawboard.getInstance();
+
+        //设置画板
+        this.setTitle("画图");
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
+        this.setSize(new Dimension(1080,720));
+        this.setLocationRelativeTo(null);
 
         drawboard.addMouseListener(listener);
         drawboard.addMouseMotionListener(listener);
         drawboard.setBackground(Color.CYAN);
+        drawboard.setPreferredSize(new Dimension(1080,600));
         drawboard.setVisible(true);
-        drawboard.setPreferredSize(new Dimension(0,1000));
-        
-        // this.add(t, BorderLayout.NORTH);
-        this.setTitle("画图");
-        // this.setLayout(new FlowLayout()); // 设置布局
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
-      
+
+        this.getContentPane().add(drawboard);
+
         // 设置按钮布局
         ButtonView buttonView = ButtonView.getInstance();
         buttonView.setListener(listener);
         buttonView.init();
         buttonView.setVisible(true);
-        buttonView.setPreferredSize(new Dimension(0,40));
-    
+        buttonView.setPreferredSize(new Dimension(1,70));
+
+
         // 设置对话框布局
         drawboard.setLayout(null);
-        
+
         JButton b = new JButton("发送");
-        b.setBounds(250, 940, 70, 30);
+        b.setBounds(250, 550, 70, 30);
 
         JTextField text = new JTextField();
-        text.setBounds(30, 940, 220, 30);
+        text.setBounds(30, 550, 220, 30);
 
+        MyTextListener textListener = MyTextListener.getInstance();
+        
         drawboard.add(b);
         drawboard.add(text);
+
+        b.addActionListener(textListener);
+        text.addActionListener(textListener);
 
         // 添加布局
         this.add(drawboard, BorderLayout.SOUTH);  
         this.add(buttonView, BorderLayout.NORTH);
         this.setVisible(true);
+        repaint();
     }
 }

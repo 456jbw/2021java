@@ -4,6 +4,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeUpDownArrow extends Shape {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[7];
     private int []dotYlist=new int[7];
@@ -48,7 +52,7 @@ public class ShapeUpDownArrow extends Shape {
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         dotXlist[0]=x1;
         dotXlist[1]=x1*3/4+x2/4;
         dotXlist[2]=x1*3/4+x2/4;

@@ -4,7 +4,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Pen extends Shape{
-    private int x2, y2;
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private int x2, y2;
     private ArrayList<Integer> dotXlist=new ArrayList<>();
     private ArrayList<Integer> dotYlist=new ArrayList<>();
     public Pen(Color color, Stroke stroke){
@@ -52,7 +56,7 @@ public class Pen extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         int arrX[]=dotXlist.stream().mapToInt(Integer::valueOf).toArray();
         int arrY[]=dotYlist.stream().mapToInt(Integer::valueOf).toArray();
         for(int i=0;i<dotYlist.size()-1;i++){

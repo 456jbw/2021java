@@ -3,6 +3,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeHeart extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[370];
     private int []dotYlist=new int[370];
@@ -47,7 +51,7 @@ public class ShapeHeart extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         double x,y;
         int k=0;
         for(double t = 1;t<=360;t++){

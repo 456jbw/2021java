@@ -3,6 +3,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeEqualTri extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[3];
     private int []dotYlist=new int[3];
@@ -47,7 +51,7 @@ public class ShapeEqualTri extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         dotXlist[0]=x1;
         dotXlist[1]=(x1+x2)/2;
         dotXlist[2]=x2;

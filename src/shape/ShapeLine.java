@@ -4,6 +4,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeLine extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     public ShapeLine(Color color, Stroke stroke){
         super(color, stroke);
@@ -46,7 +50,7 @@ public class ShapeLine extends Shape{
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
-        g.setStroke(this.stroke);
+        g.setStroke(getStroke());
         g.drawLine(x1, y1, x2, y2);
     }
 

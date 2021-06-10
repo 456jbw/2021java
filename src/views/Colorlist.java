@@ -2,7 +2,6 @@ package views;
 import javax.swing.*;
 
 import listener.MyColorListener;
-import listener.MyDrawListener;
 
 import java.awt.*;
 

@@ -1,11 +1,14 @@
 package views;
-import javax.swing.JPanel;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.Component;
-import java.awt.Graphics;
+
+import java.awt.*;
+import javax.swing.*;
+
+import controller.Client;
+
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import shape.Shape;
 import listener.*;
 
@@ -13,11 +16,11 @@ public class Drawboard extends JPanel{
     /**
      *
      */
-    private static final long serialVersionUID = 1L;
     private BufferedImage bfimg;
-    private Graphics bfpen;
+    private Graphics2D bfpen;
     private static Drawboard drawboard;
     private static List<Component> componentList;
+
     private Drawboard(){
         
     }
@@ -25,44 +28,71 @@ public class Drawboard extends JPanel{
     @Override
     public Component add(Component comp) {
         Component c = super.add(comp);
-        if (componentList == null){
+        if (componentList == null) {
             componentList = new ArrayList<Component>();
         }
         componentList.add(comp);
         return c;
     }
 
-    public static Drawboard getInstance(){
-        if (drawboard == null){
-            drawboard=new Drawboard();
+    public static Drawboard getInstance() {
+        if (drawboard == null) {
+            drawboard = new Drawboard();
         }
         return drawboard;
     }
-    
-    
+
     /**
-     * 这个方法重写了JFrame的画图方法,将会把所有绘制的图形全部绘制一次。
-     * 同时使用了缓冲bfimg 预先加载好了背景
+     * 这个方法重写了JFrame的画图方法,将会把所有绘制的图形全部绘制一次。 同时使用了缓冲bfimg 预先加载好了背景
+     * 
      * @param g 用于显示图像的画笔工具。
      */
     @Override
-    public void paint(Graphics g){
-        
-        if (bfimg == null){
+    public void paint(Graphics g) {
+
+        if (bfimg == null) {
             System.out.println("bfimg");
             bfimg = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_4BYTE_ABGR_PRE);
-            bfpen = bfimg.getGraphics();
+            bfpen = (Graphics2D) bfimg.getGraphics();
+            
+            Font font = new Font("宋体", Font.PLAIN, 18);
+            bfpen.setFont(font);
+
+            bfpen.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         }
-        
-        List <Shape> shapesList = ((MyDrawListener)this.getMouseListeners()[0]).getShapesList();
-        bfpen.setColor(getBackground());//设置背景颜色
+
+        List<Shape> shapesList = Client.getInstance().getShapesList();
+        bfpen.setColor(getBackground()); //设置背景颜色
         bfpen.fillRect(0, 0, getWidth(), getHeight());
 
-        for (Shape shape: shapesList){
-            shape.draw((Graphics2D)bfpen);
+        Shape curShape = MyDrawListener.getInstance().getShape();
+
+        if (curShape != null && curShape.getState().isMiddle()){
+            curShape.draw(bfpen);
         }
+
+        for (Shape shape : shapesList) {
+            shape.draw(bfpen);
+        }
+        
+        //绘制聊天内容
+        int i = 0;
+        Iterator<String> iterator = Client.getInstance().getContentsList().iterator();
+        int size = Client.getInstance().getContentsList().size();
+
+        bfpen.setColor(Color.BLACK); //设置背景颜色
+        
+        while(iterator.hasNext()){
+            String s = (String)iterator.next();
+
+            bfpen.setColor(Color.BLACK); //设置背景颜色
+            bfpen.drawString(s, 30, 460 + 21*(5 - size+i));
+            i++;
+        }
+
         g.drawImage(bfimg, 0, 0, this);
-        for (Component c: componentList){
+        // 绘制按钮
+        for (Component c : componentList) {
             c.repaint();
         }
     }
