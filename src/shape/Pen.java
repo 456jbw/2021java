@@ -1,14 +1,13 @@
 package shape;
 
 import java.awt.*;
+import java.util.ArrayList;
 
-/**
- * @author jbw
- * @date 2021/6/9 - 21:27
- */
-public class ShapeOval extends Shape{
+public class Pen extends Shape{
     private int x2, y2;
-    public ShapeOval(Color color, Stroke stroke){
+    private ArrayList<Integer> dotXlist=new ArrayList<>();
+    private ArrayList<Integer> dotYlist=new ArrayList<>();
+    public Pen(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -24,6 +23,8 @@ public class ShapeOval extends Shape{
         if (this.state.isStart()){
             setX1(x);
             setY1(y);
+            dotXlist.add(x);
+            dotYlist.add(y);
             System.out.printf("Press: %d %d\n", x, y);
         }
         if (this.state.isMiddle()){
@@ -37,25 +38,26 @@ public class ShapeOval extends Shape{
         if (this.state.isMiddle()){
             setX2(x);
             setY2(y);
+            dotXlist.add(x);
+            dotYlist.add(y);//将每次drag的点加进去
         }
 
     }
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "椭圆";
+        return "直线";
     }
 
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
         g.setStroke(this.stroke);
-        int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
-        int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
-        if (minx == 0 && miny == 0){
-            return;
+        int arrX[]=dotXlist.stream().mapToInt(Integer::valueOf).toArray();
+        int arrY[]=dotYlist.stream().mapToInt(Integer::valueOf).toArray();
+        for(int i=0;i<dotYlist.size()-1;i++){
+            g.drawLine(arrX[i],arrY[i],arrX[i+1],arrY[i+1]);
         }
-        g.drawOval(minx, miny, maxx-minx, maxy-miny);
     }
 
 
@@ -76,3 +78,4 @@ public class ShapeOval extends Shape{
     }
 
 }
+

@@ -2,13 +2,11 @@ package shape;
 
 import java.awt.*;
 
-/**
- * @author jbw
- * @date 2021/6/9 - 21:49
- */
-public class ShapeRoundRect extends Shape{
+public class ShapeTextBoard extends Shape{
     private int x2, y2;
-    public ShapeRoundRect(Color color, Stroke stroke){
+    private int []dotXlist=new int[12];
+    private int []dotYlist=new int[12];
+    public ShapeTextBoard(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -43,7 +41,7 @@ public class ShapeRoundRect extends Shape{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "矩形";
+        return "对话框";
     }
 
     @Override
@@ -56,8 +54,18 @@ public class ShapeRoundRect extends Shape{
             return;
         }
         int minedge=Math.min(maxx-minx,maxy-miny);
-        g.drawRoundRect(minx, miny, maxx-minx, maxy-miny,minedge/3,minedge/3);
+        g.drawRoundRect(minx, miny, maxx-minx, (maxy-miny)*9/10,minedge/6,minedge/6);
+        dotXlist[0]=x1*4/5+x2/5;
+        dotXlist[2]=x1*13/20+x2*7/20;
+        dotXlist[1]=x1*29/40+x2*11/40;
+        dotYlist[0]=y2*9/10+y1/10;
+        dotYlist[1]=y2;
+        dotYlist[2]=y2*9/10+y1/10;
+        g.drawPolygon(dotXlist,dotYlist,3);
+        g.setColor(Color.BLUE);//如何获得背景颜色？
+        g.drawLine(x1*4/5+x2/5,y2*9/10+y1/10,x1*13/20+x2*7/20,y2*9/10+y1/10);
     }
+
 
     public int getX2() {
         return x2;

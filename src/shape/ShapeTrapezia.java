@@ -2,13 +2,11 @@ package shape;
 
 import java.awt.*;
 
-/**
- * @author jbw
- * @date 2021/6/9 - 21:49
- */
-public class ShapeRoundRect extends Shape{
+public class ShapeTrapezia extends Shape{
     private int x2, y2;
-    public ShapeRoundRect(Color color, Stroke stroke){
+    private int []dotXlist=new int[4];
+    private int []dotYlist=new int[4];
+    public ShapeTrapezia(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -43,21 +41,24 @@ public class ShapeRoundRect extends Shape{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "矩形";
+        return "等腰梯形";
     }
 
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
         g.setStroke(this.stroke);
-        int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
-        int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
-        if (minx == 0 && miny == 0){
-            return;
-        }
-        int minedge=Math.min(maxx-minx,maxy-miny);
-        g.drawRoundRect(minx, miny, maxx-minx, maxy-miny,minedge/3,minedge/3);
+        dotXlist[0]=x1;
+        dotXlist[1]=x1*7/10+x2*3/10;
+        dotXlist[2]=x2*7/10+x1*3/10;
+        dotXlist[3]=x2;
+        dotYlist[0]=y2;
+        dotYlist[1]=y1;
+        dotYlist[2]=y1;
+        dotYlist[3]=y2;
+        g.drawPolygon(dotXlist,dotYlist,4);
     }
+
 
     public int getX2() {
         return x2;

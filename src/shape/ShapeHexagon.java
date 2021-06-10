@@ -3,9 +3,11 @@ package shape;
 
 import java.awt.*;
 
-public class ShapeLine extends Shape{
+public class ShapeHexagon extends Shape{
     private int x2, y2;
-    public ShapeLine(Color color, Stroke stroke){
+    private int []dotXlist=new int[6];
+    private int []dotYlist=new int[6];
+    public ShapeHexagon(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -40,14 +42,26 @@ public class ShapeLine extends Shape{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "直线";
+        return "六边形";
     }
 
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
         g.setStroke(this.stroke);
-        g.drawLine(x1, y1, x2, y2);
+        dotXlist[0]=x1;
+        dotXlist[1]=(x1+x2)/2;
+        dotXlist[2]=x2;
+        dotXlist[3]=x2;
+        dotXlist[4]=(x1+x2)/2;
+        dotXlist[5]=x1;
+        dotYlist[0]=y1*3/4+y2/4;
+        dotYlist[1]=y1;
+        dotYlist[2]=y1*3/4+y2/4;
+        dotYlist[3]=y1/4+y2*3/4;
+        dotYlist[4]=y2;
+        dotYlist[5]=y1/4+y2*3/4;
+        g.drawPolygon(dotXlist,dotYlist,6);
     }
 
 
@@ -68,3 +82,5 @@ public class ShapeLine extends Shape{
     }
 
 }
+
+

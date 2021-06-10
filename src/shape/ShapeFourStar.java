@@ -2,13 +2,11 @@ package shape;
 
 import java.awt.*;
 
-/**
- * @author jbw
- * @date 2021/6/9 - 21:49
- */
-public class ShapeRoundRect extends Shape{
+public class ShapeFourStar extends Shape{
     private int x2, y2;
-    public ShapeRoundRect(Color color, Stroke stroke){
+    private int []dotXlist=new int[8];
+    private int []dotYlist=new int[8];
+    public ShapeFourStar(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -43,21 +41,32 @@ public class ShapeRoundRect extends Shape{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "矩形";
+        return "四角星";
     }
 
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
         g.setStroke(this.stroke);
-        int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
-        int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
-        if (minx == 0 && miny == 0){
-            return;
-        }
-        int minedge=Math.min(maxx-minx,maxy-miny);
-        g.drawRoundRect(minx, miny, maxx-minx, maxy-miny,minedge/3,minedge/3);
+        dotXlist[0]=x1;
+        dotXlist[1]=x1*3/5+x2*2/5;
+        dotXlist[2]=(x1+x2)/2;
+        dotXlist[3]=x1*2/5+x2*3/5;
+        dotXlist[4]=x2;
+        dotXlist[5]=x1*2/5+x2*3/5;
+        dotXlist[6]=(x1+x2)/2;
+        dotXlist[7]=x1*3/5+x2*2/5;
+        dotYlist[0]=y1/2+y2/2;
+        dotYlist[1]=y1*3/5+y2*2/5;
+        dotYlist[2]=y1;
+        dotYlist[3]=y1*3/5+y2*2/5;
+        dotYlist[4]=y1/2+y2/2;
+        dotYlist[5]=y1*2/5+y2*3/5;
+        dotYlist[6]=y2;
+        dotYlist[7]=y1*2/5+y2*3/5;
+        g.drawPolygon(dotXlist,dotYlist,8);
     }
+
 
     public int getX2() {
         return x2;

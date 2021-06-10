@@ -2,13 +2,11 @@ package shape;
 
 import java.awt.*;
 
-/**
- * @author jbw
- * @date 2021/6/9 - 21:49
- */
-public class ShapeRoundRect extends Shape{
+public class ShapeHeart extends Shape{
     private int x2, y2;
-    public ShapeRoundRect(Color color, Stroke stroke){
+    private int []dotXlist=new int[370];
+    private int []dotYlist=new int[370];
+    public ShapeHeart(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -43,21 +41,25 @@ public class ShapeRoundRect extends Shape{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "矩形";
+        return "爱心";
     }
 
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
         g.setStroke(this.stroke);
-        int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
-        int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
-        if (minx == 0 && miny == 0){
-            return;
+        double x,y;
+        int k=0;
+        for(double t = 1;t<=360;t++){
+            x= Math.cos(Math.toRadians(t));
+            y= -(Math.sin(Math.toRadians(t)) + Math.cbrt(Math.pow(Math.cos(Math.toRadians(t)), 2.0)));
+            dotXlist[k] = (int)(x*100)*(x2-x1)/200+x1;
+            dotYlist[k] = (int)(y*100)*(y2-y1)/200+y1;
+            k++;
         }
-        int minedge=Math.min(maxx-minx,maxy-miny);
-        g.drawRoundRect(minx, miny, maxx-minx, maxy-miny,minedge/3,minedge/3);
+        g.drawPolygon(dotXlist,dotYlist,360);
     }
+
 
     public int getX2() {
         return x2;

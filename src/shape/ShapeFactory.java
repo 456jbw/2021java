@@ -25,6 +25,60 @@ public class ShapeFactory {
             case "圆形":
                 shape = new ShapeCircle(color, stroke);
                 return shape;
+            case "直线":
+                shape =new ShapeLine(color,stroke);
+                return shape;
+            case "椭圆":
+                shape =new ShapeOval(color,stroke);
+                return shape;
+            case "圆角矩形":
+                shape=new ShapeRoundRect(color,stroke);
+                return shape;
+            case "画笔":
+                shape=new Pen(color,stroke);
+                return shape;
+            case "直角三角形":
+                shape=new ShapeRightTri(color,stroke);
+                return shape;
+            case "等腰三角形":
+                shape=new ShapeEqualTri(color,stroke);
+                return shape;
+            case "菱形":
+                shape=new ShapeRhombus(color,stroke);
+                return shape;
+            case "五边形":
+                shape=new ShapePentagon(color,stroke);
+                return shape;
+            case "六边形":
+                shape=new ShapeHexagon(color,stroke);
+                return shape;
+            case "上下箭头":
+                shape=new ShapeUpDownArrow(color,stroke);
+                return shape;
+            case "左右箭头":
+                shape=new ShapeLeftRightArrow(color,stroke);
+                return shape;
+            case "四角星":
+                shape=new ShapeFourStar(color,stroke);
+                return shape;
+            case "六角星":
+                shape=new ShapeSixStar(color,stroke);
+                return shape;
+            case "平行四边形":
+                shape=new ShapeParallelogram(color,stroke);
+                return shape;
+            case "等腰梯形":
+                shape=new ShapeTrapezia(color,stroke);
+                return shape;
+            case "五角星":
+                shape=new ShapeFiveStar(color,stroke);
+                return shape;
+            case "对话框":
+                shape=new ShapeTextBoard(color,stroke);
+                return shape;
+            case "爱心":
+                shape=new ShapeHeart(color,stroke);
+                return shape;
             default:
                 return null;
             }

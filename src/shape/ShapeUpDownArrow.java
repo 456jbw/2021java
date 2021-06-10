@@ -1,15 +1,13 @@
 package shape;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
-import state.State;
 
-/**
- * 这个类是矩形类的具体实现,继承了Shape类
- */
-public class ShapeRect extends Shape{
+
+import java.awt.*;
+
+public class ShapeUpDownArrow extends Shape {
     private int x2, y2;
-    public ShapeRect(Color color, Stroke stroke){
+    private int []dotXlist=new int[7];
+    private int []dotYlist=new int[7];
+    public ShapeUpDownArrow(Color color, Stroke stroke){
         super(color, stroke);
     }
 
@@ -39,33 +37,33 @@ public class ShapeRect extends Shape{
             setX2(x);
             setY2(y);
         }
-    }
 
-    
-    @Override
-    public void releaseStrategy(int x, int y) {
-        if (getState().isMiddle()){
-            getState().next();
-        }
     }
-
-    
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "矩形";
+        return "上下箭头";
     }
 
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
         g.setStroke(this.stroke);
-        int minx = Math.min(x1, x2), miny = Math.min(y1, y2);
-        int maxx = Math.max(x1, x2), maxy = Math.max(y1, y2);
-        if (minx == 0 && miny == 0){
-            return;
-        }
-        g.drawRect(minx, miny, maxx-minx, maxy-miny);
+        dotXlist[0]=x1;
+        dotXlist[1]=x1*3/4+x2/4;
+        dotXlist[2]=x1*3/4+x2/4;
+        dotXlist[3]=x1/4+x2*3/4;
+        dotXlist[4]=x1/4+x2*3/4;
+        dotXlist[5]=x2;
+        dotXlist[6]=(x1+x2)/2;
+        dotYlist[0]=y1/2+y2/2;
+        dotYlist[1]=y1/2+y2/2;
+        dotYlist[2]=y1;
+        dotYlist[3]=y1;
+        dotYlist[4]=y2/2+y1/2;
+        dotYlist[5]=y1/2+y2/2;
+        dotYlist[6]=y2;
+        g.drawPolygon(dotXlist,dotYlist,7);
     }
 
 
@@ -84,5 +82,5 @@ public class ShapeRect extends Shape{
     public void setY2(int y2) {
         this.y2 = y2;
     }
-    
+
 }
