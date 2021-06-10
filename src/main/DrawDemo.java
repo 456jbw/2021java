@@ -1,6 +1,8 @@
 package main;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 import views.ButtonView;
@@ -30,28 +32,32 @@ public class DrawDemo extends JFrame{
 
         JPanel drawboard = Drawboard.getInstance();
 
+        //设置画板
+        this.setTitle("画图");
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
+        this.setSize(new Dimension(1080,720));
+        this.setLocationRelativeTo(null);
+
         drawboard.addMouseListener(listener);
         drawboard.addMouseMotionListener(listener);
         drawboard.setBackground(Color.CYAN);
+        drawboard.setPreferredSize(new Dimension(1080,600));
         drawboard.setVisible(true);
-        drawboard.setPreferredSize(new Dimension(0,1000));
-        
-        // this.add(t, BorderLayout.NORTH);
-        this.setTitle("画图");
-        // this.setLayout(new FlowLayout()); // 设置布局
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
-      
+
+        this.getContentPane().add(drawboard);
+
         // 设置按钮布局
         ButtonView buttonView = ButtonView.getInstance();
         buttonView.setListener(listener);
         buttonView.init();
         buttonView.setVisible(true);
-        buttonView.setPreferredSize(new Dimension(0,40));
-    
+        buttonView.setPreferredSize(new Dimension(1,70));
+
+
         // 设置对话框布局
         drawboard.setLayout(null);
-        
+
         JButton b = new JButton("发送");
         b.setBounds(250, 940, 70, 30);
 
@@ -61,8 +67,8 @@ public class DrawDemo extends JFrame{
         drawboard.add(b);
         drawboard.add(text);
 
-        // 添加布局
-        this.add(drawboard, BorderLayout.SOUTH);  
+//        // 添加布局
+        this.add(drawboard, BorderLayout.SOUTH);
         this.add(buttonView, BorderLayout.NORTH);
         this.setVisible(true);
     }

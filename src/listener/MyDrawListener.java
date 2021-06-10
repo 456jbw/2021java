@@ -31,7 +31,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
     private String type = "矩形";
     private static MyDrawListener myDrawListener;
 
-    public MyDrawListener() {
+    private MyDrawListener() {
         super();
         shapesList = new ArrayList<Shape>();
     }
