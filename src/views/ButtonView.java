@@ -1,7 +1,6 @@
 package views;
 import javax.swing.*;
 
-import javafx.scene.control.Button;
 import listener.MyDrawListener;
 import java.awt.*;
 
