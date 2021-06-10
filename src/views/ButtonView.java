@@ -1,7 +1,6 @@
 package views;
 import javax.swing.*;
 
-import javafx.scene.control.Button;
 import listener.MyDrawListener;
 import java.awt.*;
 
@@ -17,8 +16,6 @@ public class ButtonView extends JPanel{
         }
         return buttonView;
     }
-
-
 
     public void init(){
         JPanel northPanel = new JPanel();
@@ -41,12 +38,8 @@ public class ButtonView extends JPanel{
 
         // 添加颜色列表
         // 用于判断设置前景色还是设置背景色
-        ButtonGroup bg = new ButtonGroup();
-        JRadioButton back = new JRadioButton("背景色");
         // 加入到同一个按钮组
-        bg.add(back);
         // 添加单选框
-        northPanel.add(back);
         northPanel.add(new Colorlist());
         // 添加线条粗细调整到toolbar的第二行
         southPanel.add(new LineWidth());

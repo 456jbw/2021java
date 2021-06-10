@@ -2,7 +2,6 @@ package main;
 
 import java.awt.*;
 import javax.swing.*;
-
 import views.ButtonView;
 import views.Drawboard;
 import listener.*;
@@ -12,21 +11,15 @@ import listener.*;
  * @author Costwen
  */
 public class DrawDemo extends JFrame{
-    public static void main(String[] args) {
-        DrawDemo s = new DrawDemo();
-        s.init();
-    }
+
     /**
      * 这个方法用于加载和显示主窗口的各种按钮
      */
     public void init(){
-        // String [] tb= {"直线","椭圆","矩形","多边形","画笔","圆","圆角矩形","填充3D矩形",
-		// "填充弧","填充圆","刷子","橡皮","喷子"};
 
         this.setLayout(new BorderLayout());
 
         MyDrawListener listener = MyDrawListener.getInstance();
-        listener.setDemo(this);
 
         JPanel drawboard = Drawboard.getInstance();
 
@@ -48,7 +41,6 @@ public class DrawDemo extends JFrame{
         buttonView.init();
         buttonView.setVisible(true);
         buttonView.setPreferredSize(new Dimension(0,40));
-    
         // 设置对话框布局
         drawboard.setLayout(null);
         
@@ -58,8 +50,13 @@ public class DrawDemo extends JFrame{
         JTextField text = new JTextField();
         text.setBounds(30, 940, 220, 30);
 
+        MyTextListener textListener = MyTextListener.getInstance();
+        
         drawboard.add(b);
         drawboard.add(text);
+
+        b.addActionListener(textListener);
+        text.addActionListener(textListener);
 
         // 添加布局
         this.add(drawboard, BorderLayout.SOUTH);  
