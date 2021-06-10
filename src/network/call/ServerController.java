@@ -50,64 +50,73 @@ public class ServerController
 		}
 	}
 
-    /**
-     * 发送消息
-     */
+	/**
+	 * 发送消息
+	 */
 	@Override
-    public void sendShape(Shape shape) throws RemoteException {
-        for (var client: registerdClients) {
-            client.addShape(shape);
-        }
-    }
-
-	@Override
-    public void sendRepaint() throws RemoteException {
-        for (var client: registerdClients) {
-            client.repaint();
-        }
-    }
+	public void sendShape(Shape shape) {
+		for (var client: registerdClients) {
+			try {
+				client.addShape(shape);
+			} catch (RemoteException ignored) {
+			}
+		}
+	}
 
 	@Override
-    public void sendContent(String content) throws RemoteException {
-        for (var client: registerdClients) {
-            client.addContent(content);
-            client.repaint();
-        }
-    }
+	public void sendRepaint() {
+		for (var client: registerdClients) {
+			try {
+				client.repaint();
+			} catch (RemoteException ignored) {
+			}
+		}
+	}
 
-    public static void start() {
-        try {
-            var obj = new ServerController();
-            var stub = (ServerInterface)obj;
+	@Override
+	public void sendContent(String content) {
+		for (var client: registerdClients) {
+			try {
+				client.addContent(content);
+				client.repaint();
+			} catch (RemoteException ignored) {
+			}
+		}
+	}
 
-            // Bind the remote object's stub in the registry
-            Registry registry = LocateRegistry.createRegistry(1099);
-            registry.bind("server", stub);
+	public static void start() {
+		try {
+			var obj = new ServerController();
+			var stub = (ServerInterface)obj;
+
+			// Bind the remote object's stub in the registry
+			Registry registry = LocateRegistry.createRegistry(1099);
+			registry.bind("server", stub);
 
 			obj.logger.info("Server ready");
-        } catch (Exception e) {
-            System.err.println("Server exception: " + e.toString());
-            e.printStackTrace();
-        }
-    }
+		} catch (Exception e) {
+			System.err.println("Server exception: " + e.toString());
+			e.printStackTrace();
+		}
+	}
 
-    public static void main(String args[]) {
-        try {
-            var obj = new ServerController();
-            var stub = (ServerInterface)obj;
+	public static void main(String args[]) {
+		try {
+			var obj = new ServerController();
+			var stub = (ServerInterface)obj;
 
-            // Bind the remote object's stub in the registry
-            Registry registry = LocateRegistry.createRegistry(1099);
-            registry.bind("server", stub);
+			// Bind the remote object's stub in the registry
+			Registry registry = LocateRegistry.createRegistry(1099);
+			registry.bind("server", stub);
 
 			System.out.println("Server ready");
 			/*
-			for (int i = 0; i < 10; i++) {
-				Thread.sleep(1000);
-			}*/
-        } catch (Exception e) {
-            System.err.println("Server exception: " + e.toString());
-            e.printStackTrace();
-        }
-    }
+			   for (int i = 0; i < 10; i++) {
+			   Thread.sleep(1000);
+			   }*/
+		} catch (Exception e) {
+			System.err.println("Server exception: " + e.toString());
+			e.printStackTrace();
+		}
+	}
 }
