@@ -8,7 +8,14 @@ import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.function.BiConsumer;
 
+/**
+ * peer prober
+ *
+ * broadcasts probe request packet on all interfaces
+ * to retrive peer list
+ */
 public class DiscoveryProber implements Runnable {
+	// probe request header
 	public static final long PING_MESSAGE = 0xbebebe;
 
 	private static final int PROBE_INTERVAL = 1000;
@@ -17,6 +24,11 @@ public class DiscoveryProber implements Runnable {
 
 	private final DiscoverServer serv;
 
+	/** construct prober
+	 *
+	 * @param port port to use
+	 * @param cb callback function for new peer response
+	 */
 	public DiscoveryProber(
 			int port,
 			BiConsumer<String, InetSocketAddress> cb
@@ -24,6 +36,11 @@ public class DiscoveryProber implements Runnable {
 		this.serv = new DiscoverServer(port, cb);
 	}
 
+	/** construct prober
+	 *
+	 * @param addr address to listen on
+	 * @param cb callback function for new peer response
+	 */
 	public DiscoveryProber(
 			InetSocketAddress addr,
 			BiConsumer<String, InetSocketAddress> cb
@@ -31,6 +48,9 @@ public class DiscoveryProber implements Runnable {
 		this.serv = new DiscoverServer(addr, cb);
 	}
 
+	/**
+	 * UDP server to handle incoming probe response packet
+	 */
 	public class DiscoverServer extends UDPServer {
 		private final BiConsumer<String, InetSocketAddress> callback;
 		public DiscoverServer(
