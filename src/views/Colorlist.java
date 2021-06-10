@@ -14,7 +14,7 @@ public class Colorlist extends JPanel {
         // 得到监听器实例
         MyColorListener listener = MyColorListener.getInstance();
         // 为列表使用二行四列的栅格布局
-        this.setLayout(new GridLayout(2, 4, 2, 2));
+        this.setLayout(new GridLayout(2, 4, 4, 4));
         // 通过颜色数组快速构建前七个按钮
         Color[] colorArray = { Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED, Color.CYAN };
         for (Color item : colorArray) {
@@ -25,7 +25,7 @@ public class Colorlist extends JPanel {
             this.add(tmp);
         }
         // 最后一个按钮是自定义颜色
-        JButton customColor = new JButton();
+        JButton customColor = new JButton(MyImage.getColorIcon());
         customColor.setBackground(Color.WHITE);
         // 为该按钮加入与其它按钮相同的监听
         customColor.addActionListener(listener);
