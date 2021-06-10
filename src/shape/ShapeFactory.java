@@ -79,6 +79,9 @@ public class ShapeFactory {
             case "爱心":
                 shape=new ShapeHeart(color,stroke);
                 return shape;
+            case "橡皮":
+                shape=new Eraser(color,stroke);
+                return shape;
             default:
                 return null;
             }
