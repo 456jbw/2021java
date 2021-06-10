@@ -4,6 +4,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeLine extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     public ShapeLine(Color color, Stroke stroke){
         super(color, stroke);

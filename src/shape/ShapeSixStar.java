@@ -3,7 +3,11 @@ package shape;
 import java.awt.*;
 
 public class ShapeSixStar extends Shape{
-        private int x2, y2;
+        /**
+    *
+    */
+    private static final long serialVersionUID = 1L;
+    private int x2, y2;
         private int []dotXlist=new int[12];
         private int []dotYlist=new int[12];
         public ShapeSixStar(Color color, Stroke stroke){

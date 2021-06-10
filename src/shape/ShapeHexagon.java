@@ -4,6 +4,10 @@ package shape;
 import java.awt.*;
 
 public class ShapeHexagon extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[6];
     private int []dotYlist=new int[6];

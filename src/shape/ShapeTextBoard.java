@@ -5,6 +5,10 @@ import java.awt.*;
 import views.Drawboard;
 
 public class ShapeTextBoard extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[12];
     private int []dotYlist=new int[12];
@@ -56,17 +60,18 @@ public class ShapeTextBoard extends Shape{
             return;
         }
         int minedge=Math.min(maxx-minx,maxy-miny);
-        g.drawRoundRect(minx, miny, maxx-minx, (maxy-miny)*9/10,minedge/6,minedge/6);
-        dotXlist[0]=x1*4/5+x2/5;
-        dotXlist[2]=x1*13/20+x2*7/20;
-        dotXlist[1]=x1*29/40+x2*11/40;
-        dotYlist[0]=y2*9/10+y1/10;
-        dotYlist[1]=y2;
-        dotYlist[2]=y2*9/10+y1/10;
+        g.drawRoundRect(minx, miny, maxx-minx, maxy-miny,minedge/6,minedge/6);
+
+        dotXlist[0]=minx*4/5+maxx/5;
+        dotXlist[2]=minx*13/20+maxx*7/20;
+        dotXlist[1]=minx*29/40+maxx*11/40;
+        dotYlist[0]=maxy;
+        dotYlist[1]=maxy+(maxy-miny)/10;
+        dotYlist[2]=maxy;
         g.drawPolygon(dotXlist,dotYlist,3);
 
-        g.setColor(Drawboard.getInstance().getBackground());//如何获得背景颜色？
-        g.drawLine(x1*4/5+x2/5,y2*9/10+y1/10,x1*13/20+x2*7/20,y2*9/10+y1/10);
+        g.setColor(Drawboard.getInstance().getBackground());
+        g.drawLine(minx*4/5+maxx/5,maxy,minx*13/20+maxx*7/20,maxy);
     }
 
     @Override

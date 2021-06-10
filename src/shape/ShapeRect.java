@@ -8,6 +8,10 @@ import state.State;
  * 这个类是矩形类的具体实现,继承了Shape类
  */
 public class ShapeRect extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     public ShapeRect(Color color, Stroke stroke){
         super(color, stroke);

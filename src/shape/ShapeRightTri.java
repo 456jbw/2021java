@@ -4,6 +4,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ShapeRightTri extends Shape{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[3];
     private int []dotYlist=new int[3];

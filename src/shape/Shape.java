@@ -2,6 +2,7 @@ package shape;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Stroke;
+import java.io.Serializable;
 
 import state.State;
 
@@ -9,8 +10,12 @@ import state.State;
  * 这个类是所有图形类的基类,如果需要绘制图像,需要继承这个基类。
  * @author Costwen
  */
-public abstract class Shape {
-    protected int x1, y1; // 
+public abstract class Shape implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    protected int x1, y1; //
     protected Color color; // color
     protected Stroke stroke;
     protected State state;
