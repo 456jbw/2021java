@@ -53,7 +53,7 @@ public class Eraser extends Pen{
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "橡皮擦";
+        return "橡皮";
     }
 
     @Override
