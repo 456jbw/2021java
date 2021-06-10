@@ -3,7 +3,6 @@ package shape;
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
-import 
 
 import state.State;
 
