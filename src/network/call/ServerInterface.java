@@ -31,6 +31,15 @@ public interface ServerInterface extends Remote {
 	 */
 	void registerClient(ClientInterface client) throws RemoteException;
 	/**
+	 * Registers a client
+	 * perform handshake with server
+	 *
+	 * @param client client to register
+	 * @param name client name
+	 */
+	void registerClient(ClientInterface client, String name)
+			throws RemoteException;
+	/**
 	 * Unregisters a client
 	 *
 	 * @param client client to unregister
