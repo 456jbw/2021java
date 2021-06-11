@@ -97,4 +97,12 @@ public class Drawboard extends JPanel{
             c.repaint();
         }
     }
+
+    public BufferedImage getBfimg() {
+        return bfimg;
+    }
+
+    public void setBfimg(BufferedImage bfimg) {
+        this.bfimg = bfimg;
+    }
 }
