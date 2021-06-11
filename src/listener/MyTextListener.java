@@ -3,6 +3,7 @@ package listener;
 import javax.swing.*;
 
 import controller.Controller;
+import views.Dialogue;
 import views.Drawboard;
 import java.awt.event.*;
 
@@ -11,7 +12,7 @@ public class MyTextListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("发送")){
-            JTextField jft = (JTextField) Drawboard.getInstance().getComponent(1);
+            JTextField jft = (JTextField) Dialogue.getInstance().getComponent(1);
             if (jft.getText().length() != 0){
                 Controller.getInstance().addContent(jft.getText());
             }
