@@ -86,22 +86,22 @@ public class Drawboard extends JPanel{
         Iterator<String> iterator = Client.getInstance().getContentsList().iterator();
         int size = Client.getInstance().getContentsList().size();
 
-        bfpen.setColor(Color.BLACK); //设置背景颜色
+        bfpen.setColor(Color.BLACK); //设置颜色
         while(iterator.hasNext()){
             String s = (String)iterator.next();
             bfpen.setColor(Drawboard.getInstance().getBackground());
-            bfpen.fillRect(30,440 + 21*(5 - size+i),300,50);
+            bfpen.fillRect(30,510 + 21*(5 - size+i),300,50);
             bfpen.setColor(Color.BLACK); //设置文字颜色
-            bfpen.drawString(s, 30, 460 + 21*(5 - size+i));
+            bfpen.drawString(s, 30, 530 + 21*(5 - size+i));
 
             i++;
         }
 
         g.drawImage(bfimg, 0, 0, this);
         // 绘制按钮
-        for (Component c : componentList) {
-            c.repaint();
-        }
+//        for (Component c : componentList) {
+//           c.repaint();
+//       }
     }
 
     public BufferedImage getBfimg() {
