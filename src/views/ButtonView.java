@@ -3,6 +3,8 @@ package views;
 import javax.swing.*;
 
 import listener.MyDrawListener;
+import listener.MySaveListener;
+
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -91,7 +93,7 @@ public class ButtonView extends JPanel{
         //保存按钮
         JButton buttonC = new JButton("保存",MyImage.getSaveIcon());
         buttonC.setFont(new Font("宋体",1,0));
-        buttonC.addActionListener(listener);
+        buttonC.addActionListener(MySaveListener.getInstance());
         buttonC.setContentAreaFilled(false);
         buttonC.setFocusPainted(false);
         //buttonC.setBorderPainted(false);
