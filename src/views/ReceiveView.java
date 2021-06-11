@@ -39,5 +39,6 @@ public class ReceiveView extends JDialog{
         tmp.setFont(font);
         tmp.setBounds(200, cnt*32, 100, 20);
         this.add(tmp);
+		this.repaint();
     }
 }

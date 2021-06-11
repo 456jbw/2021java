@@ -30,7 +30,7 @@ public class MyServerListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String name = e.getActionCommand();
         var addr = Client.getInstance().getServersList().get(name);
-        Client.getInstance().setServer(addr);
+        Client.getInstance().setServer(addr, Client.getInstance().getName());
         SearchView.getInstance().showWait();
         System.out.println(e.getActionCommand());
     }

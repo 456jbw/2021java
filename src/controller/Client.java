@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.rmi.RemoteException;
 
 import main.DrawDemo;
 import shape.Shape;
 import views.ChooseView;
 import views.ReceiveView;
 import views.SearchView;
+import network.call.ClientController;
 
 public class Client {
     private final DrawDemo demo;
@@ -117,8 +118,15 @@ public class Client {
     /**
      * 
      */
-    public void setServer(InetSocketAddress addr){
-            // 根据传入的服务器地址设置主机
-    }
+	public void setServer(InetSocketAddress addr, String name){
+		// 根据传入的服务器地址设置主机
+		try {
+			var clientwrapper = new ClientController(Client.getInstance());
+			Server.getInstance(addr.getHostName())
+				.registerClient(clientwrapper, name);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

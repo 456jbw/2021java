@@ -3,6 +3,8 @@ package listener;
 import javax.swing.*;
 
 import controller.Controller;
+import controller.Client;
+
 import network.discovery.RespondServer;
 import views.ChooseView;
 import views.Drawboard;
@@ -40,6 +42,9 @@ public class MyEnterListener implements ActionListener {
             }
         }
         else if (e.getActionCommand().equals("加入")){
+			Client.getInstance().setName(
+					ChooseView.getInstance().getTextField().getText()
+					);
             try {
                 Controller.getInstance().Find();
                 ChooseView.getInstance().step3();

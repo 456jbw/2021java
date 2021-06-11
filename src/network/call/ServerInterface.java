@@ -50,4 +50,6 @@ public interface ServerInterface extends Remote {
     void sendShape(Shape shape) throws RemoteException;
     void sendRepaint() throws RemoteException;
     void sendContent(String content) throws RemoteException;
+
+    void sendStart() throws RemoteException;
 }

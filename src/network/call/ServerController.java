@@ -43,7 +43,7 @@ public class ServerController
 		logger.finest("registering client");
 		if(!registerdClients.contains(client)){
 			registerdClients.add(client);
-			logger.info("client registered");
+			logger.info("client " + name + " registered");
 			callback.accept(name);
 		}
 	}
@@ -96,6 +96,16 @@ public class ServerController
 			try {
 				client.addContent(content);
 				client.repaint();
+			} catch (RemoteException ignored) {
+			}
+		}
+	}
+
+	@Override
+	public void sendStart() {
+		for (var client: registerdClients) {
+			try {
+				client.start();
 			} catch (RemoteException ignored) {
 			}
 		}
