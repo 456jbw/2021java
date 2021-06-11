@@ -16,9 +16,13 @@ public class Server {
      * @return 一个Server实例
      */
     public static ServerInterface getInstance() {
+		return getInstance(null);
+	}
+
+    public static ServerInterface getInstance(String host) {
 		try {
 			if (server == null){
-				var registry = LocateRegistry.getRegistry(null);
+				var registry = LocateRegistry.getRegistry(host);
 				server = (ServerInterface) registry.lookup("server");
 			}
 		} catch (Exception e) {

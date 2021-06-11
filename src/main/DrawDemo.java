@@ -26,6 +26,7 @@ public class DrawDemo extends JFrame{
         //设置画板
         this.setTitle("画图");
 //        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // 设置大小
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
         this.setSize(new Dimension(1080,720));
         this.setLocationRelativeTo(null);

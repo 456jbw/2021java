@@ -23,4 +23,5 @@ public interface ClientInterface extends Remote {
     void addShape(final Shape shape) throws RemoteException;
     void addContent(final String content) throws RemoteException;
     void repaint() throws RemoteException;
+    void start() throws RemoteException;
 }

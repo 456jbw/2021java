@@ -38,6 +38,12 @@ public class ClientController
 	}
 
 	@Override
+    public void start() {
+		logger.info("start painting");
+		client.sendStart();
+	}
+
+	@Override
 	public String pong(String x) {
 		logger.info("got pong call with " + x);
 		return "pong";

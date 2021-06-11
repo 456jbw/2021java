@@ -81,7 +81,6 @@ public class Drawboard extends JPanel{
         int size = Client.getInstance().getContentsList().size();
 
         bfpen.setColor(Color.BLACK); //设置背景颜色
-        
         while(iterator.hasNext()){
             String s = (String)iterator.next();
             bfpen.setColor(Drawboard.getInstance().getBackground());
