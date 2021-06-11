@@ -30,6 +30,9 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         super();
     }
 
+    /**
+     * 单例模式的获取方法
+     */
     public static MyDrawListener getInstance() {
         if (myDrawListener == null) {
             myDrawListener = new MyDrawListener();
@@ -37,7 +40,9 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         return myDrawListener;
     }
 
-
+    /**
+     * 获得线条宽度
+     */
     @Override
     public void stateChanged(ChangeEvent e) {
         JSlider jslider = (JSlider) e.getSource();
@@ -46,6 +51,9 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         Drawboard.getInstance().requestFocus();
     }
 
+    /**
+     * 选择画图类型
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stu
@@ -72,6 +80,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         shape.pressStrategy(x, y);
     }
 
+
     @Override
     public void mouseMoved(MouseEvent e) {
         super.mouseMoved(e);
@@ -81,7 +90,6 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
      * 这个方法重写了mouseDragged 方法,用于监听鼠标拖拽操作
      * 如果当前绘制的图形处于Middle态(未确定),将会根据鼠标的移动位置持续绘制。
      * @param e 用于获取现在鼠标的一些信息参数
-     * 
      */
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -97,6 +105,11 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         }
     }
 
+    /**
+     * 这个方法重写了mouseReleased 方法,用于监听鼠标释放
+     * 将会把绘制完的图像信息发送给服务器统一渲染
+     * @param e 用于获取现在鼠标的一些信息参数
+     */
     @Override 
     public void mouseReleased(MouseEvent e) {
         int x = (int)e.getX(), y=(int)e.getY();

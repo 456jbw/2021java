@@ -12,9 +12,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.BufferedOutputStream;
 
+
+/**
+ * 这个类实现了绘制保存图片的界面
+ */
 public class MySaveListener implements ActionListener {
     private static MySaveListener listener;
 
+    /**
+     * 重写的actionPerformed方法
+     * 点击保存之后,将会显示保存地址的选择,选择完成之后,将会保存绘制图片并提示
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("保存")) {

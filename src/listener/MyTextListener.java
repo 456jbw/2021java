@@ -6,8 +6,14 @@ import controller.Controller;
 import views.Drawboard;
 import java.awt.event.*;
 
+/**
+ * 这个类用来监听发送按钮,从而实现信息的发送
+ */
 public class MyTextListener implements ActionListener{
     private static MyTextListener listener;
+    /**
+     * 重写的监听方法 当点击发送之后将会向所有人发送输入到对话框的内容
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("发送")){

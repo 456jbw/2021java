@@ -12,6 +12,9 @@ import java.util.List;
 import shape.Shape;
 import listener.*;
 
+/**
+ * 这个类实现了画板界面
+ */
 public class Drawboard extends JPanel{
     /**
      *
@@ -25,6 +28,9 @@ public class Drawboard extends JPanel{
         
     }
 
+    /**
+     * 重写了添加组件的方法,从而能够实现用自定义的列表记录添加的按钮
+     */
     @Override
     public Component add(Component comp) {
         Component c = super.add(comp);

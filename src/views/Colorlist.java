@@ -5,10 +5,14 @@ import listener.MyColorListener;
 
 import java.awt.*;
 
-// 颜色选择列表
+/**
+ * 这个类实现了颜色选取的界面
+ */
 public class Colorlist extends JPanel {
     static final long serialVersionUID = 1471001741;
-
+    /**
+     * 构造函数初始化了基本界面
+     */
     public Colorlist() {
         // 得到监听器实例
         MyColorListener listener = MyColorListener.getInstance();

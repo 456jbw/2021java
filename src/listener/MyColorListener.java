@@ -4,6 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import views.Drawboard;
 
+/**
+ * 这个类用来监听点击颜色选择,将会设置画板的颜色
+ */
 public class MyColorListener implements ActionListener {
     private static MyColorListener myColorListener;
     public static MyColorListener getInstance(){
@@ -12,6 +15,9 @@ public class MyColorListener implements ActionListener {
         }
         return myColorListener;
     }
+    /**
+     * 点击按钮将会画板设置颜色
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton instance = (JButton) e.getSource();

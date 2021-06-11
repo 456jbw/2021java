@@ -1,7 +1,9 @@
 package state;
 
 import java.io.Serializable;
-
+/**
+ * 三种状态的枚举类
+ */
 enum StateType{
     Start, Middle, End;
 }
@@ -63,7 +65,10 @@ public class State implements Serializable{
         }
         return false;
     }
-    
+    /**
+     * 用来判断是否为End状态,End状态表示绘制结束状态
+     * @return true 表示结果为真, false 表示结果为假
+     */
     public boolean isEnd(){
         if (this.getType() == StateType.End){
             return true;

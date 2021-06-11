@@ -9,6 +9,9 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * 这个类实现了最上层按钮的布局
+ */
 public class ButtonView extends JPanel{
     /**
 	 *
@@ -26,7 +29,9 @@ public class ButtonView extends JPanel{
     }
 
 
-
+    /**
+     * 界面初始化
+     */
     public void init(){
         this.setLayout(new BorderLayout());
 

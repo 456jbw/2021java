@@ -3,6 +3,10 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ * 这个类用来加载图标
+ */
 public class MyImage {
     public static MyImage image = new MyImage();
 
@@ -14,7 +18,12 @@ public class MyImage {
         pencilIcon.setImage(pencilIcon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT ));
         return pencilIcon;
     }
-
+    /**
+     * 获取橡皮擦图标
+     * @param width 图标的宽度
+     * @param height 图标的长度
+     * @return 图标
+     */
     public static ImageIcon getEraserIcon(int width,int height) {
         eraserIcon.setImage(eraserIcon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT ));
         return eraserIcon;
