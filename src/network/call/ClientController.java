@@ -40,7 +40,7 @@ public class ClientController
 	@Override
     public void start() {
 		logger.info("start painting");
-		client.start();
+		client.sendStart();
 	}
 
 	@Override

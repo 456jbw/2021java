@@ -62,6 +62,14 @@ public class Client {
         c.init();
     }
 
+	public void sendStart() {
+		(new Thread(new Runnable() {
+			public void run() {
+				Client.getInstance().start();
+			}
+		})).start();
+	}
+
     public void start() {
         ChooseView.getInstance().dispose();
         SearchView.getInstance().dispose();

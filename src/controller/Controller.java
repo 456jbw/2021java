@@ -70,7 +70,11 @@ public class Controller {
 		if (serverThread != null){
 			serverThread.interrupt();
 		}
-        Client.getInstance().start();
+		try {
+			Server.getInstance().sendStart();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Find() throws IOException {
