@@ -32,9 +32,9 @@ public class ReceiveView extends JDialog{
         add(start);
     }
     
-    public void addClient(String a, InetSocketAddress b){
+    public void addClient(String a){
         JLabel tmp = new JLabel();
-        tmp.setText(a + b);
+        tmp.setText(a);
         this.add(tmp);
     }
 }

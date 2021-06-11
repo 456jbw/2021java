@@ -2,6 +2,7 @@ package controller;
 
 import shape.Shape;
 import views.Drawboard;
+import views.ReceiveView;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -55,10 +56,14 @@ public class Controller {
 		serverThread = new Thread(new RespondServer(name, (short)1099));
 		serverThread.start();
 		ServerController.start();
+		// assert server has already started
+		ServerController.mayGetController()
+			.setCallback(ReceiveView.getInstance()::addClient);
+
 		Client.getInstance().setName(name);
 		Client.getInstance().setState(1);
 		var clientwrapper = new ClientController(Client.getInstance());
-		Server.getInstance().registerClient(clientwrapper);
+		Server.getInstance().registerClient(clientwrapper, name);
 	}
 	
 	public void Start(){
@@ -69,8 +74,10 @@ public class Controller {
 	}
 
 	public void Find() throws IOException {
-		searchThread = new Thread(new DiscoveryProber(
-			null,(a,b)-> Client.getInstance().addServer(a, b) ));
+		searchThread = new Thread(
+				new DiscoveryProber(
+					null,
+					Client.getInstance()::addServer));
 		searchThread.start();
 		Client.getInstance().setState(3);
 	}

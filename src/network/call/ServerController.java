@@ -6,11 +6,14 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
+import java.util.function.Consumer;
 
 import shape.Shape;
 
 /**
- * Implementation of SourceInterface to be used for remote communication. extending UnicastRemoteObject ensures that every remote object shall be unique, therefore notifications can be directed to this particular instance.
+ * @author wyc
+ *
+ * paint server
  */
 public class ServerController
 	extends UnicastRemoteObject implements ServerInterface {
@@ -19,15 +22,29 @@ public class ServerController
 	private CopyOnWriteArrayList<ClientInterface> registerdClients =
 		new CopyOnWriteArrayList<ClientInterface>();
 
+	// callback function when a new client joins
+	private Consumer<String> callback = (a)->{};
+
+	public void setCallback(Consumer<String> cb) {
+		callback = cb;
+	}
+
 	protected ServerController() throws RemoteException {
 	}
 
 	@Override
 	public void registerClient(ClientInterface client) throws RemoteException {
+		registerClient(client, "");
+	}
+
+	@Override
+	public void registerClient(ClientInterface client, String name)
+		throws RemoteException {
 		logger.finest("registering client");
 		if(!registerdClients.contains(client)){
 			registerdClients.add(client);
 			logger.info("client registered");
+			callback.accept(name);
 		}
 	}
 
@@ -84,9 +101,24 @@ public class ServerController
 		}
 	}
 
+	private static ServerController obj;
+
+	/**
+	 * get running server
+	 *
+	 * @return running server, or null if server not started
+	 */
+	public static ServerController mayGetController() {
+		return obj;
+	}
+
 	public static void start() {
+		if (obj != null) {
+			return;
+		}
+
 		try {
-			var obj = new ServerController();
+			obj = new ServerController();
 			var stub = (ServerInterface)obj;
 
 			// Bind the remote object's stub in the registry
