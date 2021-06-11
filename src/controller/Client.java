@@ -30,9 +30,13 @@ public class Client {
         demo = new DrawDemo();
     }
 
+    /**
+     * 用于记录扫描到的服务器。
+     * @param a 服务器名字
+     * @param b 服务器地址
+     */
     public void addServer(String a, InetSocketAddress b){
-        serversList.put(a, b);
-    
+        serversList.put(a+b, b);
         SearchView.getInstance().addButton(a, b);
         SearchView.getInstance().repaint();
     }
@@ -110,6 +114,11 @@ public class Client {
     public void setServersList(HashMap<String, InetSocketAddress> serversList) {
         this.serversList = serversList;
     }
-
+    /**
+     * 
+     */
+    public void setServer(InetSocketAddress addr){
+            // 根据传入的服务器地址设置主机
+    }
 
 }
