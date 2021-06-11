@@ -3,9 +3,8 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-
 /**
- * 这个类用来加载图标
+ * 这个类用来加载图标,将会加载pencil, eraser, color, save的相对应的图标到内存之中。
  */
 public class MyImage {
     public static MyImage image = new MyImage();
@@ -28,11 +27,18 @@ public class MyImage {
         eraserIcon.setImage(eraserIcon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT ));
         return eraserIcon;
     }
-
+    /**
+     * 获得颜色的图标
+     * @return 返回颜色的选择图标
+     */
     public static ImageIcon getColorIcon() {
         return colorIcon;
     }
 
+    /**
+     * 获得保存的图标
+     * @return 返回保存的图标
+     */
     public static ImageIcon getSaveIcon() {
         saveIcon.setImage(saveIcon.getImage().getScaledInstance(35, 35,Image.SCALE_DEFAULT ));
         return saveIcon;

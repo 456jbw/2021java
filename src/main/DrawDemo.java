@@ -9,12 +9,14 @@ import listener.*;
 
 /**
  * 这个类用于设置画图的主窗口和绘制图像
+ * 将会显示画板,颜色选择器,线条选择器,对话框
  * @author Costwen
  */
 public class DrawDemo extends JFrame{
 
     /**
      * 这个方法用于加载和显示主窗口的各种按钮
+     * 将会显示画板,颜色选择器,线条选择器,对话框
      */
     public void init(){
 

@@ -12,7 +12,7 @@ import network.call.ClientController;
 
 
 /**
- * 这个类用来启动整个程序
+ * 这个类用来启动整个程序, 将会启动一个客户端进程,显示开始界面
  */
 public class Start {
     /**
@@ -22,7 +22,7 @@ public class Start {
      */
     public static void main(String[] args) throws Exception {
 
-        var allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+        var allNetInterfaces = NetworkInterface.getNetworkInterfaces();     
             //循环遍历所有网络接口
         String host = null;
         while (allNetInterfaces.hasMoreElements()) {
@@ -43,9 +43,9 @@ public class Start {
                 }
             }
         }
-        System.out.println(System.getProperties());
         if (host != null){
-            System.setProperty("java.rmi.server.hostname", host);
+            // System.setProperty("java.rmi.server.hostname", host);
+            System.setProperty("java.rmi.server.useLocalHostname", "true");
         }
         Client client = Client.getInstance();
         client.show();
