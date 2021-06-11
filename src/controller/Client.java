@@ -15,6 +15,9 @@ import views.ReceiveView;
 import views.SearchView;
 import network.call.ClientController;
 
+/**
+ * 这个类实现了本地的客户端
+ */
 public class Client {
     private final DrawDemo demo;
     private String name;
@@ -24,6 +27,9 @@ public class Client {
     private static Client client;
     private HashMap<String, InetSocketAddress> serversList;
 
+    /**
+     * 构造函数
+     */
     private Client() {
         shapesList = new ArrayList<Shape>();
         contentsList = new ArrayDeque<String>();
@@ -41,27 +47,39 @@ public class Client {
         SearchView.getInstance().addButton(a, b);
         SearchView.getInstance().repaint();
     }
-
+    /**
+     * 添加一个绘制记录到历史
+     * @param shape
+     */
     public void addShape(final Shape shape) {
         shapesList.add(shape);
-    }
-
+    }   
+    /**
+     * 添加一个发言到历史记录,并且将会只保存5条
+     * @param content
+     */
     public void addContent(final String content) {
         if (contentsList.size() == 5){
             contentsList.removeFirst();
         }
         contentsList.add(content);
     }
-
+    /**
+     * 重新绘制屏幕
+     */
     public void repaint() {
         demo.repaint();
     }
-
+    /**
+     * 显示最开始的选择界面
+     */
     public void show(){
         var c = ChooseView.getInstance();
         c.init();
     }
-
+    /**
+     * 向服务器发送开始请求
+     */
 	public void sendStart() {
 		(new Thread(new Runnable() {
 			public void run() {
@@ -69,7 +87,9 @@ public class Client {
 			}
 		})).start();
 	}
-
+    /**
+     * 自己开始画图进程
+     */
     public void start() {
         ChooseView.getInstance().dispose();
         SearchView.getInstance().dispose();
@@ -124,7 +144,7 @@ public class Client {
         this.serversList = serversList;
     }
     /**
-     * 
+     * 设置与自己相连接的主机
      */
 	public void setServer(InetSocketAddress addr, String name){
 		// 根据传入的服务器地址设置主机

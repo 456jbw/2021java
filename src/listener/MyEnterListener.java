@@ -11,13 +11,21 @@ import views.Drawboard;
 import java.awt.event.*;
 import java.io.IOException;
 
+/**
+ * 这个类实现了新建协作,加入,名称输入的监听器
+ */
 public class MyEnterListener implements ActionListener {
     private static MyEnterListener myEnterListener;
-
+    /**
+     * 单例模式构造方法
+     */
     private MyEnterListener() {
 
     }
-
+    /**
+     * 单例模式获得实例的犯法
+     * @return 回车事件返回的实例
+     */
     public static MyEnterListener getInstance() {
         if (myEnterListener == null) {
             myEnterListener = new MyEnterListener();
@@ -25,6 +33,12 @@ public class MyEnterListener implements ActionListener {
         return myEnterListener;
     }
 
+    /**
+     * 用来监听点击的是新建协作还是加入
+     * 新建协作将会创建一个服务器,等待其他人加入, 并切换为开始,再次点击将会开始画图
+     * 加入将会搜寻所有的服务器
+     * @param e 事件
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

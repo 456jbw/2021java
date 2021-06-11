@@ -7,6 +7,9 @@ import javax.swing.*;
 
 import listener.MyEnterListener;
 
+/**
+ * 这个类用来实现开始时选择加入或者时新建协作的界面
+ */
 public class ChooseView extends JFrame{
     private static ChooseView chooseView;
     private JTextField textField;
@@ -17,6 +20,9 @@ public class ChooseView extends JFrame{
         }
         return chooseView;
     }
+    /**
+     * 界面初始化
+     */
     public void init(){
         this.setTitle("画图");        
 
@@ -64,11 +70,16 @@ public class ChooseView extends JFrame{
         this.add(textField);    
         this.setVisible(true);
     }
+    /**
+     * 点击开始显示接收到的请求界面
+     */
     public void step1(){
         confirmBtn.setText("开始");
         ReceiveView.getInstance().init();
     }
-
+    /**
+     * 开始搜索服务器界面
+     */
     public void step3(){
         SearchView.getInstance().init();
     }

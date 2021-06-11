@@ -3,19 +3,21 @@ package shape;
 import java.awt.*;
 
 public class ShapeParallelogram extends Shape{
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[4];
     private int []dotYlist=new int[4];
+    /**
+     * 平行四边形的构造类
+     * @param color 平行四边形的颜色
+     * @param stroke 平行四边形的宽度
+     */
     public ShapeParallelogram(Color color, Stroke stroke){
         super(color, stroke);
     }
 
     /**
-     * 当鼠标按下之后,将会设置按下去的位置为矩形的左上角坐标
+     * 当鼠标按下之后,将会设置按下去的位置为矩形的平行四边形坐标
      * 同时,图形将会进入画图阶段(Middle)
      * @param x 鼠标点击相对于界面的x坐标
      * @param y 鼠标点击相对于界面的y坐标
@@ -29,10 +31,14 @@ public class ShapeParallelogram extends Shape{
             System.out.printf("Press: %d %d\n", x, y);
         }
         if (this.state.isMiddle()){
-
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置，用于实时绘制平行四边形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x,int y) {
         // TODO Auto-generated method stub
@@ -42,12 +48,18 @@ public class ShapeParallelogram extends Shape{
         }
 
     }
+    /**
+     * @return 平行四边形的名字
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "平行四边形";
     }
-
+    /**
+     * 图形将会进入画图阶段(Middle)，进行平行四边形的绘制
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
@@ -62,7 +74,11 @@ public class ShapeParallelogram extends Shape{
         dotYlist[3]=y2;
         g.drawPolygon(dotXlist,dotYlist,4);
     }
-
+    /**
+     * 释放鼠标的策略，用于显示本次平行四边形的最终图形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void releaseStrategy(int x, int y) {
         if (getState().isMiddle()){

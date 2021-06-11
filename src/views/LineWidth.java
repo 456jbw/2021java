@@ -3,10 +3,14 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 import listener.*;
-// 调整线宽
+/**
+ * 这个类实现了线宽选择器界面
+ */
 public class LineWidth extends JPanel {
     private static final long serialVersionUID = 15100151;
-
+    /**
+     * 构造函数 将会初始化界面
+     */
     public LineWidth() {
         JSlider slider = new JSlider(1, 20, 1);
         slider.setMajorTickSpacing(4);

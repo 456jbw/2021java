@@ -9,6 +9,9 @@ import listener.MyEnterListener;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * 这个类实现了显示加入协作的客户端名称界面
+ */
 public class ReceiveView extends JDialog{
     private static ReceiveView receiveView;
     private int cnt;
@@ -18,6 +21,9 @@ public class ReceiveView extends JDialog{
         }
         return receiveView;
     }
+    /**
+     * 界面初始化
+     */
     public void init(){
         setTitle("加入的成员");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);// 设置退出时的行为
@@ -30,7 +36,10 @@ public class ReceiveView extends JDialog{
         start.setBounds(190, 400, 100, 30);
         add(start);
     }
-    
+    /**
+     * 用来显示添加到当前服务器的客户端名称
+     * @param a 客户端名称
+     */
     public void addClient(String a){
         JLabel tmp = new JLabel();
         cnt++;

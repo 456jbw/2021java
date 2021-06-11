@@ -30,12 +30,7 @@ public abstract class Shape implements Serializable{
         this.stroke = (int)((BasicStroke)stroke).getLineWidth();
         this.state = new State();
     }
-/**
- * 这个方法重写了Shape类的pressStrategy方法,用于实现鼠标点击屏幕时,相对应的图形的行为。
- * 
- * @param x 这次点击时鼠标x轴的位置
- * @param y 这次点击时鼠标y轴的位置
- */
+
     public void clickStrategy(int x, int y){
 
     };
@@ -43,15 +38,30 @@ public abstract class Shape implements Serializable{
     public void moveStrategy(int x,int y){
 
     };
-    
+    /**
+     * 这个方法是了Shape类的dragStrategy方法,用于实现鼠标拖拽时,相对应的图形的行为。
+     *
+     * @param x 这次点击时鼠标x轴的位置
+     * @param y 这次点击时鼠标y轴的位置
+     */
     public void dragStrategy(int x, int y){
 
     };
-
+    /**
+     * 这个方法是了Shape类的releaseStrategy方法,用于实现鼠标释放时,相对应的图形的行为。
+     *
+     * @param x 这次点击时鼠标x轴的位置
+     * @param y 这次点击时鼠标y轴的位置
+     */
     public void releaseStrategy(int x, int y){
 
     };
-
+    /**
+     * 这个方法是了Shape类的pressStrategy方法,用于实现鼠标点击屏幕时,相对应的图形的行为。
+     *
+     * @param x 这次点击时鼠标x轴的位置
+     * @param y 这次点击时鼠标y轴的位置
+     */
     public void pressStrategy(int x,int y){
     };
 

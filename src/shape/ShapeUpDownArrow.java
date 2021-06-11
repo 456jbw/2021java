@@ -4,19 +4,21 @@ package shape;
 import java.awt.*;
 
 public class ShapeUpDownArrow extends Shape {
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private int x2, y2;
     private int []dotXlist=new int[7];
     private int []dotYlist=new int[7];
+    /**
+     * 上下箭头的构造类
+     * @param color 上下箭头的颜色
+     * @param stroke 上下箭头的宽度
+     */
     public ShapeUpDownArrow(Color color, Stroke stroke){
         super(color, stroke);
     }
 
     /**
-     * 当鼠标按下之后,将会设置按下去的位置为矩形的左上角坐标
+     * 当鼠标按下之后,将会设置按下去的位置为上下箭头的左上角坐标
      * 同时,图形将会进入画图阶段(Middle)
      * @param x 鼠标点击相对于界面的x坐标
      * @param y 鼠标点击相对于界面的y坐标
@@ -34,6 +36,11 @@ public class ShapeUpDownArrow extends Shape {
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置，用于实时绘制上下箭头
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x,int y) {
         // TODO Auto-generated method stub
@@ -43,12 +50,18 @@ public class ShapeUpDownArrow extends Shape {
         }
 
     }
+    /**
+     * @return 上下箭头的名字
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "上下箭头";
     }
-
+    /**
+     * 图形将会进入画图阶段(Middle)，进行上下箭头的绘制
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
@@ -69,7 +82,11 @@ public class ShapeUpDownArrow extends Shape {
         dotYlist[6]=y2;
         g.drawPolygon(dotXlist,dotYlist,7);
     }
-
+    /**
+     * 释放鼠标的策略，用于显示本次上下箭头的最终图形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void releaseStrategy(int x, int y) {
         if (getState().isMiddle()){

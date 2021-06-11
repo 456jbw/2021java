@@ -4,6 +4,9 @@ import java.rmi.registry.LocateRegistry;
 
 import network.call.ServerInterface;
 
+/**
+ * 这个类用于启动服务器
+ */
 public class Server {
     /**
      * 这个函数用于监控和服务器连接的客户端
@@ -19,6 +22,11 @@ public class Server {
 		return getInstance(null);
 	}
 
+    /**
+     * 服务器注册
+     * @param host 服务器的地址
+     * @return 一个服务器实例
+     */
     public static ServerInterface getInstance(String host) {
 		try {
 			if (server == null){

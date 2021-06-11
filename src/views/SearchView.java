@@ -12,6 +12,9 @@ import java.net.InetSocketAddress;
 import javax.lang.model.type.NullType;
 import javax.swing.*;
 
+/**
+ * 这个类实现了搜索可用服务器的界面
+ */
 public class SearchView extends JDialog{
     private static SearchView searchView;
     public static SearchView getInstance(){
@@ -20,6 +23,9 @@ public class SearchView extends JDialog{
         }
         return searchView;
     }
+    /**
+     * 界面初始化
+     */
     public void init(){
         setTitle("查找到的服务器");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);// 设置退出时的行为
@@ -29,7 +35,11 @@ public class SearchView extends JDialog{
         setVisible(true);
         setFocusable(true);
     }
-
+    /**
+     * 添加搜索到的服务器到界面上
+     * @param a 服务器名称
+     * @param b 服务器地址
+     */
     public void addButton(String a, InetSocketAddress b){
         JButton tmp = new JButton();
         tmp.setText(a + b);
@@ -37,6 +47,9 @@ public class SearchView extends JDialog{
         this.add(tmp);
 
     }
+    /**
+     * 选择服务器之后,除主机外,其他客户端将显示等待主机开始
+     */
     public void showWait(){
         this.getContentPane().removeAll();
         Font font = new Font("宋体", Font.BOLD, 30);
