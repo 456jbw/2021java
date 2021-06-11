@@ -1,6 +1,8 @@
 package views;
 
 import java.awt.*;
+import java.awt.Dialog.ModalityType;
+
 import javax.swing.*;
 
 import listener.MyEnterListener;
@@ -15,15 +17,13 @@ public class ChooseView extends JFrame{
         }
         return chooseView;
     }
-    void init(){
+    public void init(){
         this.setTitle("画图");        
 
-        this.setBackground(Color.PINK);  
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
         this.setSize(new Dimension(1080,720));
         this.setLocationRelativeTo(null);
         this.setLayout(null);
-
 
         var listener = MyEnterListener.getInstance();
 
@@ -64,14 +64,13 @@ public class ChooseView extends JFrame{
         this.add(textField);    
         this.setVisible(true);
     }
-    public void step(){
+    public void step1(){
         confirmBtn.setText("开始");
-        
+        ReceiveView.getInstance().init();
     }
-    public static void main(String[] args) {
-        var c = getInstance();
-        c.init();
-        // System.out.println(111);
+
+    public void step3(){
+        SearchView.getInstance().init();
     }
 
     public JTextField getTextField() {
@@ -89,4 +88,5 @@ public class ChooseView extends JFrame{
     public void setConfirmBtn(JButton confirmBtn) {
         this.confirmBtn = confirmBtn;
     }
+    
 }

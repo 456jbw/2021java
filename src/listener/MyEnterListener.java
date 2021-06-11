@@ -33,14 +33,20 @@ public class MyEnterListener implements ActionListener {
         if (e.getActionCommand().equals("新建协作")) {
             try {
                 Controller.getInstance().Wait(ChooseView.getInstance().getTextField().getText());
-                ChooseView.getInstance().step();
+                ChooseView.getInstance().step1();
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }
         else if (e.getActionCommand().equals("加入")){
-            
+            try {
+                Controller.getInstance().Find();
+                ChooseView.getInstance().step3();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
         else if (e.getActionCommand().equals("开始")){
             Controller.getInstance().Start();

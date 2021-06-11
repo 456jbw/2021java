@@ -30,10 +30,11 @@ public class DrawDemo extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // 设置退出时的行为
         this.setSize(new Dimension(1080,720));
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         drawboard.addMouseListener(listener);
         drawboard.addMouseMotionListener(listener);
-        drawboard.setBackground(Color.CYAN);
+        drawboard.setBackground(Color.WHITE);
         drawboard.setPreferredSize(new Dimension(1080,600));
         drawboard.setVisible(true);
 
@@ -44,7 +45,7 @@ public class DrawDemo extends JFrame{
         buttonView.setListener(listener);
         buttonView.init();
         buttonView.setVisible(true);
-        buttonView.setPreferredSize(new Dimension(1,70));
+        buttonView.setPreferredSize(new Dimension(1,120));
 
 
         // 设置对话框布局

@@ -83,8 +83,11 @@ public class Drawboard extends JPanel{
         bfpen.setColor(Color.BLACK); //设置背景颜色
         while(iterator.hasNext()){
             String s = (String)iterator.next();
-            bfpen.setColor(Color.BLACK); //设置背景颜色
+            bfpen.setColor(Drawboard.getInstance().getBackground());
+            bfpen.fillRect(30,440 + 21*(5 - size+i),300,50);
+            bfpen.setColor(Color.BLACK); //设置文字颜色
             bfpen.drawString(s, 30, 460 + 21*(5 - size+i));
+
             i++;
         }
 

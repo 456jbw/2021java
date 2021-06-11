@@ -12,6 +12,6 @@ public class Start {
         Client client = Client.getInstance();
 		var clientwrapper = new ClientController(client);
 		Server.getInstance(host).registerClient(clientwrapper);
-        client.start();
+        client.show();
     }
 }
