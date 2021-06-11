@@ -1,6 +1,7 @@
 package controller;
 
 import shape.Shape;
+import views.Dialogue;
 import views.Drawboard;
 import views.ReceiveView;
 
@@ -51,7 +52,7 @@ public class Controller {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		((JTextField)Drawboard.getInstance().getComponent(1)).setText("");
+		((JTextField)Dialogue.getInstance().getComponent(1)).setText("");
 	}
 	/**
 	 * 向服务器发送重绘请求
