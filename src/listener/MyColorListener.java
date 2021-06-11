@@ -9,6 +9,11 @@ import views.Drawboard;
  */
 public class MyColorListener implements ActionListener {
     private static MyColorListener myColorListener;
+
+    /**
+     * 获得颜色监听器的实例
+     * @return 颜色监听器实例
+     */
     public static MyColorListener getInstance(){
         if (myColorListener == null){
             myColorListener = new MyColorListener();
@@ -17,6 +22,7 @@ public class MyColorListener implements ActionListener {
     }
     /**
      * 点击按钮将会画板设置颜色
+     * @param e 事件
      */
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -14,6 +14,7 @@ public class MyTextListener implements ActionListener{
     private static MyTextListener listener;
     /**
      * 重写的监听方法 当点击发送之后将会向所有人发送输入到对话框的内容
+     * @param e 事件
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -24,7 +25,14 @@ public class MyTextListener implements ActionListener{
             }
         }
     }
+    /**
+     * 单例模式构造方法
+     */
     private MyTextListener(){}
+    /**
+     * 单例模式的实例获得方法
+     * @return 监听器
+     */
     public static MyTextListener getInstance(){
         if (listener == null){
             listener = new MyTextListener();

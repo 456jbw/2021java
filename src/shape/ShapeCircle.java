@@ -38,6 +38,12 @@ public class ShapeCircle extends Shape{
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置
+     * 画笔的所有拖拽点都会被记录
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x, int y) {
         // TODO Auto-generated method stub
@@ -47,15 +53,21 @@ public class ShapeCircle extends Shape{
             setY2(y);
         }
     }
+    /**
+     * 释放鼠标的策略，用于显示本次画图的最终图形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void releaseStrategy(int x, int y) {
         if (getState().isMiddle()){
             getState().next();
         }
     }
-
-
-
+    /**
+     * 图形将会进入画图阶段(Middle)，并调用画圆的函数
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g) {
         g.setColor(this.color);
@@ -69,7 +81,9 @@ public class ShapeCircle extends Shape{
         System.out.printf("Radius: %d\n",radius);
         g.drawOval(x1-radius, y1-radius, 2*radius, 2*radius);
     }
-
+    /**
+     * @return 圆形的名字
+     */
     @Override
     public String toString() {
         return "圆形";

@@ -10,15 +10,22 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * 这个类实现了最上层按钮的布局
+ * 这个类实现了最上层按钮的布局, 能够显示图形、橡皮擦、颜色选择器、画笔宽度选项并选择
  */
 public class ButtonView extends JPanel{
 
 	private MyDrawListener listener;
     private static ButtonView buttonView;
+    /**
+     * 构造方法 
+     */
     private ButtonView(){
     }
 
+    /**
+     * 单例模式 获得一个ButtonView的实例
+     * @return ButtonView 的实例
+     */
     public static ButtonView getInstance(){
         if (buttonView == null){
             buttonView = new ButtonView();
@@ -28,7 +35,13 @@ public class ButtonView extends JPanel{
 
 
     /**
-     * 界面初始化
+     * 图像界面初始化
+     * 将会显示所有可以选择绘制的图形
+     * 可以绘制的图形有"矩形", "圆形", "直线", "椭圆", "爱心", "菱形","五边形", "六边形",  
+     * "四角星", "五角星", "六角星", "对话框","上下箭头", "左右箭头","圆角矩形","等腰梯形",
+     * "平行四边形", "直角三角形", "等腰三角形"
+     * 点击相对应的按钮之后,将能够绘制对应的图像
+     * 同时加载了颜色选择器和线条宽度选择器
      */
     public void init(){
         this.setLayout(new BorderLayout());
@@ -130,10 +143,19 @@ public class ButtonView extends JPanel{
         this.add(lw);
     }
 
+    /**
+     * 获得监听ButtonView的MyDrawListener 类型的listener
+     * @return 返回一个MyDrawListener 实例
+     * @see MyDrawListener
+     */
     public MyDrawListener getListener() {
         return listener;
     }
 
+    /**
+     * 设置ButtonView 的动作监听器
+     * @param listener MyDrawListener类型的一个实例
+     */
     public void setListener(MyDrawListener listener) {
         this.listener = listener;
     }

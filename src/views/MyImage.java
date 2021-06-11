@@ -9,10 +9,10 @@ import java.awt.*;
 public class MyImage {
     public static MyImage image = new MyImage();
 
-    private static ImageIcon pencilIcon = new ImageIcon(image.getClass().getResource(  "image/pencil.png"));
-    private static ImageIcon eraserIcon = new ImageIcon(image.getClass().getResource( "image/eraser.png"));
-    private static ImageIcon colorIcon = new ImageIcon(image.getClass().getResource( "image/color.png"));
-    private static ImageIcon saveIcon = new ImageIcon(image.getClass().getResource( "image/save.png"));
+    private static ImageIcon pencilIcon = new ImageIcon(image.getClass().getResource(  "/image/pencil.png"));
+    private static ImageIcon eraserIcon = new ImageIcon(image.getClass().getResource( "/image/eraser.png"));
+    private static ImageIcon colorIcon = new ImageIcon(image.getClass().getResource( "/image/color.png"));
+    private static ImageIcon saveIcon = new ImageIcon(image.getClass().getResource( "/image/save.png"));
     public static ImageIcon getPencilIcon(int width,int height) {
         pencilIcon.setImage(pencilIcon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT ));
         return pencilIcon;

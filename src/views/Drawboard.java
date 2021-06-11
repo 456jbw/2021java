@@ -13,7 +13,7 @@ import shape.Shape;
 import listener.*;
 
 /**
- * 这个类实现了画板界面
+ * 这个类实现了画板界面,画板界面提供了一个画板可以让客户端在上面绘制预设好的图形
  */
 public class Drawboard extends JPanel{
     /**
@@ -24,6 +24,9 @@ public class Drawboard extends JPanel{
     private static Drawboard drawboard;
     private static List<Component> componentList;
 
+    /**
+     * 构造函数
+     */
     private Drawboard(){
         
     }
@@ -40,7 +43,10 @@ public class Drawboard extends JPanel{
         componentList.add(comp);
         return c;
     }
-
+    /**
+     * 单例模式 
+     * @return 返回一个Drawboard的实例
+     */
     public static Drawboard getInstance() {
         if (drawboard == null) {
             drawboard = new Drawboard();
@@ -49,8 +55,11 @@ public class Drawboard extends JPanel{
     }
 
     /**
-     * 这个方法重写了JFrame的画图方法,将会把所有绘制的图形全部绘制一次。 同时使用了缓冲bfimg 预先加载好了背景
-     * 
+     * 这个方法重写了JFrame的画图方法,将会把记录在历史记录之中所有已经绘制的图形全部绘制一次。 
+     * 使用了一个缓冲图片,首先将背景重置和绘制等操作绘制在缓冲图片上。
+     * 然后再一次性将缓冲图片加载到当前的画布之上,避免了屏幕的闪烁
+     * 同时根据聊天记录也会在画板的相对应区域渲染聊天记录
+     * 同时为了实现客户端自身能够实时看到绘制的图形的预览效果,单独绘制了仍处于绘图Middle态的图形
      * @param g 用于显示图像的画笔工具。
      */
     @Override
@@ -103,11 +112,17 @@ public class Drawboard extends JPanel{
 //           c.repaint();
 //       }
     }
-
+    /**
+     * 获取处于缓冲区的图片,也就是绘制的图像
+     * @return 返回一个BufferedImage表已经绘制的图像
+     */
     public BufferedImage getBfimg() {
         return bfimg;
     }
-
+    /**
+     * 设置缓冲区绘制图像
+     * @param bfimg 要设置的图像
+     */
     public void setBfimg(BufferedImage bfimg) {
         this.bfimg = bfimg;
     }

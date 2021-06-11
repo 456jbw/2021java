@@ -25,7 +25,9 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
     private ShapeFactory shapeFactory = new ShapeFactory();
     private String type = "矩形";
     private static MyDrawListener myDrawListener;
-
+    /**
+     * 单例模式构造方法
+     */
     private MyDrawListener() {
         super();
     }
@@ -42,6 +44,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
 
     /**
      * 获得线条宽度
+     * @param e 事件
      */
     @Override
     public void stateChanged(ChangeEvent e) {
@@ -53,6 +56,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
 
     /**
      * 选择画图类型
+     * @param e 事件
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -61,7 +65,10 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
                 type = e.getActionCommand();
             }
     }
-   
+    /**
+     * 鼠标点击后的操作
+     * @param e 事件
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -69,6 +76,7 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
     
     /**
      * 这个方法重写了mousePressed 方法,当鼠标按下之后,如果当前没有设置画图的类型或者是画图的图形状态处于结束状态,将会创建一个新的图形。
+     * @param e 事件
      */
     @Override
     public void mousePressed(MouseEvent e){
@@ -80,7 +88,10 @@ public class MyDrawListener extends MouseAdapter implements ActionListener, Chan
         shape.pressStrategy(x, y);
     }
 
-
+    /**
+     * 鼠标移动对应的操作
+     * @param e 事件
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         super.mouseMoved(e);

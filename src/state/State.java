@@ -7,6 +7,7 @@ import java.io.Serializable;
 enum StateType{
     Start, Middle, End;
 }
+
 /**
  * 这个类实现了一个描述目前绘制的图形状态的类
  * 当图形处于Start态时,将会设置图形的起始位置(X1, Y1)
@@ -14,7 +15,6 @@ enum StateType{
  * 当图形处于End态时,将会结束监听位置,并且确定完成图形的最终形状。
  * @author Costwen
  */
-
 public class State implements Serializable{
     /**
      *
@@ -75,10 +75,17 @@ public class State implements Serializable{
         }
         return false;
     }
+    /**
+     * 获得当前形状的State 
+     * @return StateType 
+     */
     public StateType getType() {
         return type;
     }
-
+    /**
+     * 设置当前的状态
+     * @param type 要设置的状态
+     */
     public void setType(StateType type) {
         this.type = type;
     }

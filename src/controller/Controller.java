@@ -16,6 +16,7 @@ import network.discovery.RespondServer;
 
 /**
  * 这个类实现了客户端的一些操作的控制,将会向服务器发送相对应的指令
+ * @author costwen
  */
 public class Controller {
 	private static Controller controller;

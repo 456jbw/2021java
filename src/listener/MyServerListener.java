@@ -17,10 +17,10 @@ import java.io.IOException;
  */
 public class MyServerListener implements ActionListener {
     private static MyServerListener myServerListener;
-
-    private MyServerListener() {
-
-    }
+    /**
+     * 单例模式构造方法
+     */
+    private MyServerListener() {}
 
     /**
      * 获取一个实例
@@ -36,6 +36,7 @@ public class MyServerListener implements ActionListener {
     /**
      * 重写的监听方法
      * 将会设置客户端的服务器主机
+     * @param e 事件
      */
     @Override
     public void actionPerformed(ActionEvent e) {

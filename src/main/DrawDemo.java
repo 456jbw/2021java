@@ -73,6 +73,7 @@ public class DrawDemo extends JFrame{
         text.addActionListener(textListener);
 
         // 添加布局
+
         this.setLayout(null);
         //this.add(drawboard, BorderLayout.SOUTH);
         //this.add(buttonView, BorderLayout.NORTH);

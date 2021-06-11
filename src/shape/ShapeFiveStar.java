@@ -10,12 +10,17 @@ public class ShapeFiveStar extends Shape{
     private int x2, y2;
     private int []dotXlist=new int[12];
     private int []dotYlist=new int[12];
+    /**
+     * 五角星的构造类
+     * @param color 五角星的颜色
+     * @param stroke 五角星的宽度
+     */
     public ShapeFiveStar(Color color, Stroke stroke){
         super(color, stroke);
     }
 
     /**
-     * 当鼠标按下之后,将会设置按下去的位置为矩形的左上角坐标
+     * 当鼠标按下之后,将会设置按下去的位置为五角星的左上角坐标
      * 同时,图形将会进入画图阶段(Middle)
      * @param x 鼠标点击相对于界面的x坐标
      * @param y 鼠标点击相对于界面的y坐标
@@ -33,6 +38,11 @@ public class ShapeFiveStar extends Shape{
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置，用于实时绘制五角星
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x,int y) {
         // TODO Auto-generated method stub
@@ -42,12 +52,18 @@ public class ShapeFiveStar extends Shape{
         }
 
     }
+    /**
+     * @return 五角星的名字
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "五角星";
     }
-
+    /**
+     * 图形将会进入画图阶段(Middle)，进行五角星的绘制
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
@@ -74,7 +90,11 @@ public class ShapeFiveStar extends Shape{
         dotYlist[9]=y1*2/5+y2*3/5;
         g.drawPolygon(dotXlist,dotYlist,10);
     }
-
+    /**
+     * 释放鼠标的策略，用于显示本次画五角星的最终图形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void releaseStrategy(int x, int y) {
         if (getState().isMiddle()){

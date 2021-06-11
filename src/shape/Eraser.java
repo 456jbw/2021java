@@ -5,15 +5,16 @@ import views.Drawboard;
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * @author jbw
- * @date 2021/6/11 - 0:16
- */
 public class Eraser extends Pen{
     private static final long serialVersionUID = 1L;
     private int x2, y2;
     private ArrayList<Integer> dotXlist=new ArrayList<>();
     private ArrayList<Integer> dotYlist=new ArrayList<>();
+    /**
+     * 橡皮的构造类
+     * @param color 橡皮擦的颜色，这里是背景色
+     * @param stroke 设置橡皮的宽度
+     */
     public Eraser(Color color, Stroke stroke){
         super(color, stroke);
     }
@@ -39,6 +40,11 @@ public class Eraser extends Pen{
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x,int y) {
         // TODO Auto-generated method stub
@@ -50,12 +56,18 @@ public class Eraser extends Pen{
         }
 
     }
+    /**
+     * @return 橡皮的名字
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "橡皮";
     }
-
+    /**
+     * 图形将会进入画图阶段(Middle)，进行擦除
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g){
         g.setColor(Drawboard.getInstance().getBackground());
@@ -67,6 +79,11 @@ public class Eraser extends Pen{
         }
     }
 
+    /**
+     * 释放鼠标的策略，用于显示本次画图的最终图形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void releaseStrategy(int x, int y) {
         if (getState().isMiddle()){

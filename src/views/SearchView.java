@@ -1,7 +1,6 @@
 package views;
 
 import javax.swing.JDialog;
-import javax.swing.plaf.DimensionUIResource;
 
 import controller.Client;
 import listener.MyServerListener;
@@ -9,11 +8,12 @@ import listener.MyServerListener;
 import java.awt.*;
 import java.net.InetSocketAddress;
 
-import javax.lang.model.type.NullType;
 import javax.swing.*;
 
 /**
- * 这个类实现了搜索可用服务器的界面
+ * 这个类实现了搜索可用服务器的界面,将会显示所有的搜寻到的服务器名称。
+ * 点击相对应的按钮之后将会显示等待主机开始
+ * @author costwen
  */
 public class SearchView extends JDialog{
     private static SearchView searchView;
@@ -24,7 +24,7 @@ public class SearchView extends JDialog{
         return searchView;
     }
     /**
-     * 界面初始化
+     * 界面初始化,设置了标题和界面布局。
      */
     public void init(){
         setTitle("查找到的服务器");
@@ -35,6 +35,7 @@ public class SearchView extends JDialog{
         setVisible(true);
         setFocusable(true);
     }
+
     /**
      * 添加搜索到的服务器到界面上
      * @param a 服务器名称
@@ -48,7 +49,7 @@ public class SearchView extends JDialog{
 
     }
     /**
-     * 选择服务器之后,除主机外,其他客户端将显示等待主机开始
+     * 选择服务器之后,除主机外,其他客户端将显示等待主机开始。
      */
     public void showWait(){
         this.getContentPane().removeAll();

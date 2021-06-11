@@ -10,6 +10,11 @@ public class ShapeFourStar extends Shape{
     private int x2, y2;
     private int []dotXlist=new int[8];
     private int []dotYlist=new int[8];
+    /**
+     * 笔的构造类
+     * @param color 四角星的颜色
+     * @param stroke 四角星的宽度
+     */
     public ShapeFourStar(Color color, Stroke stroke){
         super(color, stroke);
     }
@@ -33,6 +38,11 @@ public class ShapeFourStar extends Shape{
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置，用于实时绘制四角星
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x,int y) {
         // TODO Auto-generated method stub
@@ -42,12 +52,18 @@ public class ShapeFourStar extends Shape{
         }
 
     }
+    /**
+     * @return 四角星的名字
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "四角星";
     }
-
+    /**
+     * 图形将会进入画图阶段(Middle)，进行四角星的绘制
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);

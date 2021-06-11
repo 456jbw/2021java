@@ -44,9 +44,11 @@ public class Start {
             }
         }
         if (host != null){
-            // System.setProperty("java.rmi.server.hostname", host);
-            System.setProperty("java.rmi.server.useLocalHostname", "true");
+            System.setProperty("java.rmi.server.hostname", host);
+            // System.setProperty("java.rmi.server.useLocalHostname", "true");
         }
+
+        System.out.println(System.getProperties());
         Client client = Client.getInstance();
         client.show();
     }

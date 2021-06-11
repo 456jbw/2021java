@@ -17,6 +17,7 @@ import network.call.ClientController;
 
 /**
  * 这个类实现了本地的客户端
+ * @author costwen
  */
 public class Client {
     private final DrawDemo demo;
@@ -97,6 +98,10 @@ public class Client {
         demo.init();
     }
 
+    /**
+     * 单例模式
+     * @return 返回一个Client实例
+     */
     public static Client getInstance() {
         if (client == null) {
             client = new Client();

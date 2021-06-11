@@ -6,13 +6,19 @@ import listener.MyColorListener;
 import java.awt.*;
 
 /**
- * 这个类实现了颜色选取的界面
+ * 这个类实现了颜色选取的界面, 能够在前7个选项之中选择
+ * Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED, Color.CYAN 7中固定好的颜色
+ * 并且能够在最后一个按钮之中自定义自己的颜色选项
  */
 public class Colorlist extends JPanel {
     static final long serialVersionUID = 1471001741;
+    
     /**
-     * 构造函数初始化了基本界面
+     * 构造函数初始化了基本界面,一共加载了8个颜色选择的按钮,其中前面的7个用来选择预设好的
+     * Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED, Color.CYAN7中颜色
+     * 最后一个按钮用来自定义,点击之后将会弹出一个可以供自定义选择颜色的界面框
      */
+
     public Colorlist() {
         // 得到监听器实例
         MyColorListener listener = MyColorListener.getInstance();

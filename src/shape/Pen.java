@@ -11,6 +11,11 @@ public class Pen extends Shape{
 	private int x2, y2;
     private ArrayList<Integer> dotXlist=new ArrayList<>();
     private ArrayList<Integer> dotYlist=new ArrayList<>();
+    /**
+     * 笔的构造类
+     * @param color 笔的颜色
+     * @param stroke 笔的宽度
+     */
     public Pen(Color color, Stroke stroke){
         super(color, stroke);
     }
@@ -36,6 +41,12 @@ public class Pen extends Shape{
         }
         state.next();
     }
+    /**
+     * 拖动鼠标时，记录每次拖动的位置
+     * 画笔的所有拖拽点都会被记录
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void dragStrategy(int x,int y) {
         // TODO Auto-generated method stub
@@ -47,12 +58,18 @@ public class Pen extends Shape{
         }
 
     }
+    /**
+     * @return 画笔的名字
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "直线";
+        return "画笔";
     }
-
+    /**
+     * 图形将会进入画图阶段(Middle)，画出线条
+     * @param g 画笔，用于在画布上实时画图
+     */
     @Override
     public void draw(Graphics2D g){
         g.setColor(this.color);
@@ -63,7 +80,11 @@ public class Pen extends Shape{
             g.drawLine(arrX[i],arrY[i],arrX[i+1],arrY[i+1]);
         }
     }
-
+    /**
+     * 释放鼠标的策略，用于显示本次画图的最终图形
+     * @param x 鼠标点击相对于界面的x坐标
+     * @param y 鼠标点击相对于界面的y坐标
+     */
     @Override
     public void releaseStrategy(int x, int y) {
         if (getState().isMiddle()){
