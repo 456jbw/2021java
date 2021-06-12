@@ -59,7 +59,6 @@ public class SearchView extends JDialog{
         jLabel.setFont(font);
         jLabel.setVisible(true);
         jLabel.setBounds(150, 100, 250, 100);
-
         add(jLabel);
         setVisible(true);
         repaint();

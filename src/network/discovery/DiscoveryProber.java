@@ -115,6 +115,7 @@ public class DiscoveryProber implements Runnable {
 			serv_thread.start();
 
 			serv.chan.socket().setBroadcast(true);
+
 			var addr = new InetSocketAddress(
 					"255.255.255.255",
 					RespondServer.PORT);

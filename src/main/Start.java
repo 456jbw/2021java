@@ -48,7 +48,7 @@ public class Start {
             // System.setProperty("java.rmi.server.useLocalHostname", "true");
         }
 
-        System.out.println(System.getProperties());
+        // System.out.println(System.getProperties());
         Client client = Client.getInstance();
         client.show();
     }

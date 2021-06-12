@@ -46,7 +46,7 @@ public class ButtonView extends JPanel{
     public void init(){
         this.setLayout(new BorderLayout());
 
-        System.out.println(MyImage.getPencilIcon(30,30).getDescription());
+        // System.out.println(MyImage.getPencilIcon(30,30).getDescription());
             
         String[] shapeArray = { "矩形", "圆形", "直线", "椭圆", "爱心", "菱形",
                 "五边形", "六边形",  "四角星", "五角星", "六角星", "对话框",

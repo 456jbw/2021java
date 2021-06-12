@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * 这个类实现了颜色选取的界面, 能够在前7个选项之中选择
- * Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED, Color.CYAN 7中固定好的颜色
+ * Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED, Color.CYAN 7种固定好的颜色
  * 并且能够在最后一个按钮之中自定义自己的颜色选项
  */
 public class Colorlist extends JPanel {
@@ -25,7 +25,8 @@ public class Colorlist extends JPanel {
         // 为列表使用二行四列的栅格布局
         this.setLayout(new GridLayout(2, 4, 4, 4));
         // 通过颜色数组快速构建前七个按钮
-        Color[] colorArray = { Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED, Color.CYAN };
+        Color[] colorArray = { Color.BLACK, Color.BLUE, Color.YELLOW, Color.GREEN, Color.PINK,
+             Color.RED, Color.CYAN };
         for (Color item : colorArray) {
             JButton tmp = new JButton();
             tmp.setBackground(item);

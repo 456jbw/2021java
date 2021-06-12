@@ -4,8 +4,8 @@ import javax.swing.JSlider;
 
 import listener.*;
 /**
- * 这个类实现了线宽选择器界面
- * 将会有一个可以拖动的Slider选择具体的线宽
+     * 这个类实现了线宽选择器界面
+     * 将会有一个可以拖动的Slider选择具体的线宽
  */
 public class LineWidth extends JPanel {
     private static final long serialVersionUID = 15100151;
