@@ -3,7 +3,9 @@ package shape;
 import java.awt.*;
 
 import views.Drawboard;
-
+/**
+ * 这个类是对话框的具体实现,继承了Shape类
+ */
 public class ShapeTextBoard extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

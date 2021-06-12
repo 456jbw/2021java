@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类是矩形类的具体实现,继承了等腰梯形类
+ */
 public class ShapeTrapezia extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

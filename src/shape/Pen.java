@@ -2,7 +2,9 @@ package shape;
 
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * 这个类用来生成画笔
+ */
 public class Pen extends Shape{
     /**
 	 *

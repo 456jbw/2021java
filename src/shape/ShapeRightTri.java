@@ -2,7 +2,9 @@ package shape;
 
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * 这个类是直角三角形的具体实现,继承了Shape类
+ */
 public class ShapeRightTri extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类用来生成椭圆
+ */
 public class ShapeOval extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

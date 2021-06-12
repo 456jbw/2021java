@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类用来生成左右箭头
+ */
 public class ShapeLeftRightArrow extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

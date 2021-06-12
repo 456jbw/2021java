@@ -16,7 +16,7 @@ import views.SearchView;
 import network.call.ClientController;
 
 /**
- * 这个类实现了本地的客户端
+ * 这个类实现了本地的客户端,记录了该客户端的绘制历史,搜寻到的服务器,连接的服务器,当前设置的昵称。还有发言历史。
  * @author costwen
  */
 public class Client {

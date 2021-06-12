@@ -3,8 +3,7 @@ package shape;
 import java.awt.*;
 
 /**
- * @author jbw
- * @date 2021/6/9 - 21:49
+ * 这个类是圆角矩形的具体实现,继承了Shape类
  */
 public class ShapeRoundRect extends Shape{
     private static final long serialVersionUID = 1L;

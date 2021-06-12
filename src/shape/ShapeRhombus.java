@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类是矩形类的具体实现,继承了菱形
+ */
 public class ShapeRhombus extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类用来生成心形
+ */
 public class ShapeHeart extends Shape{
     /**
      *

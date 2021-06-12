@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类用来生成五角星
+ */
 public class ShapeFiveStar extends Shape{
     /**
      *
