@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类是六角星的具体实现,继承了Shape类
+ */
 public class ShapeSixStar extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

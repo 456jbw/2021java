@@ -2,6 +2,9 @@ package shape;
 
 import java.awt.*;
 
+/**
+ * 这个类用来生成四角星
+ */
 public class ShapeFourStar extends Shape{
     /**
      *

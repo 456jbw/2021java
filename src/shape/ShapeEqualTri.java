@@ -1,7 +1,9 @@
 package shape;
 
 import java.awt.*;
-
+/**
+ * 这个类用来生成等腰三角形
+ */
 public class ShapeEqualTri extends Shape{
     /**
      *

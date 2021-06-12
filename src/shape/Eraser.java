@@ -5,6 +5,9 @@ import views.Drawboard;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * 这个类用来生成橡皮
+ */
 public class Eraser extends Pen{
     private static final long serialVersionUID = 1L;
     private int x2, y2;

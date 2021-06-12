@@ -2,7 +2,9 @@ package shape;
 
 
 import java.awt.*;
-
+/**
+ * 这个类用来生成五边形
+ */
 public class ShapePentagon extends Shape{
     private static final long serialVersionUID = 1L;
     private int x2, y2;
