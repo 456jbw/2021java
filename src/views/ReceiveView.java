@@ -43,6 +43,7 @@ public class ReceiveView extends JDialog{
      * @param a 客户端名称
      */
     public void addClient(String a){
+        System.out.println("xxxx");
         JLabel tmp = new JLabel();
         cnt++;
         Font font = new Font("宋体", Font.BOLD, 15);
@@ -50,5 +51,6 @@ public class ReceiveView extends JDialog{
         tmp.setFont(font);
         tmp.setBounds(200, cnt*32, 100, 20);
         this.add(tmp);
+        this.repaint();
     }
 }
